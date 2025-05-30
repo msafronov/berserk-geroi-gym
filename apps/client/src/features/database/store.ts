@@ -7,8 +7,10 @@ export interface IDatabaseStoreCard {
 
 export interface IDatabaseStoreDeck {
   title: string;
+  description: string;
   hero: IDatabaseStoreCard;
-  cards: IDatabaseStoreCard[];
+  deck: IDatabaseStoreCard[];
+  sideboard: IDatabaseStoreCard[];
 }
 
 export interface IDatabaseStoreSettings {
@@ -22,11 +24,5 @@ export interface IDatabaseStore {
   decks: IDatabaseStoreDeck[];
 }
 
-export const $databaseStore = atom<IDatabaseStore>({
-  name: '<DEFAULT_USER>',
-  settings: {
-    lastSelectedDeckIdSideA: 0,
-    lastSelectedDeckIdSideB: 1,
-  },
-  decks: [],
-});
+// @ts-ignore
+export const $databaseStore = atom<IDatabaseStore>(_DEFAULT_USER_DATABASE_);
