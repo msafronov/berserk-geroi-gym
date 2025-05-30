@@ -1,0 +1,23 @@
+{
+  "name": "client",
+  "description": "",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\"",
+    "lint": "echo \"Error: no lint specified\""
+  },
+  "dependencies": {
+    "@nanostores/preact": "^1.0.0",
+    "clsx": "^2.1.1",
+    "nanostores": "^1.0.1",
+    "preact": "^10.26.6"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

@@ -1,0 +1,19 @@
+.icon {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.icon--clickable {
+  cursor: pointer;
+}
+
+.icon--image--telegram {
+  background-image: url("/img/icons/icon-telegram.svg");
+}
+
+.icon--image--github {
+  background-image: url("/img/icons/icon-github.svg");
+}

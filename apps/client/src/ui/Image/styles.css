@@ -1,0 +1,9 @@
+.image {}
+
+.image--margin-top--lg {
+  margin-top: var(--margin-lg);
+}
+
+.image--margin-bottom--lg {
+  margin-bottom: var(--margin-lg);
+}

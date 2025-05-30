@@ -1,0 +1,23 @@
+.modal-header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.modal-header-close {
+  position: absolute;
+  top: -8px;
+  right: var(--margin-sm);
+  color: var(--color-violett-light);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-header-close:hover,
+.modal-header-close:focus {
+  color: var(--color-violett);
+  text-decoration: none;
+  cursor: pointer;
+}

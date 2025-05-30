@@ -1,0 +1,10 @@
+{
+  "name": "card-images-downloader",
+  "description": "",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "node index.js",
+    "build": "node index.js"
+  }
+}

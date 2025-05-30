@@ -1,0 +1,34 @@
+.button {
+  cursor: pointer;
+  border: none;
+  padding: var(--padding-sm);
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  opacity: 0.6;
+}
+
+.button--disabled {
+  background-color: var(--color-gray) !important;
+  pointer-events: none;
+}
+
+.button--size--md {
+  width: 30%;
+}
+
+.button--color--white {
+  background-color: var(--color-white);
+}
+
+.button--color--violett {
+  background-color: var(--color-violett);
+}
+
+.button--margin-top--lg {
+  margin-top: var(--margin-lg2);
+}

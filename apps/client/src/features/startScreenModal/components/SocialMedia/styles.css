@@ -1,0 +1,11 @@
+.start-screen-modal-social-media {
+  display: flex;
+}
+
+.start-screen-modal-social-media-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: var(--margin-md);
+  margin-right: var(--margin-md);
+}

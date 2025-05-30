@@ -1,0 +1,48 @@
+.text {
+  font-family: 'Roboto';
+  color: var(--color-black);
+}
+
+.text--color--black {
+  color: var(--color-black);
+}
+
+.text--color--white {
+  color: var(--color-white);
+}
+
+.text--color--purple {
+  color: var(--color-purple);
+}
+
+.text--color--violett {
+  color: var(--color-violett);
+}
+
+.text--size--sm {
+  font-size: var(--text-size-sm);
+}
+
+.text--size--md {
+  font-size: var(--text-size-md);
+}
+
+.text--size--lg {
+  font-size: var(--text-size-lg);
+}
+
+.text--weight--light {
+  font-weight: 400;
+}
+
+.text--weight--bold {
+  font-weight: 600;
+}
+
+.text--style--normal {
+  font-style: normal;
+}
+
+.text--style--italic {
+  font-style: italic;
+}

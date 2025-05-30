@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url("/font/Roboto-Light.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/font/Roboto-LightItalic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/font/Roboto-Bold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/font/Roboto-BoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  user-select: none;
+
+  /* colors */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray: #cccccc;
+  --color-gray-light: #eeeeee;
+
+  --color-darkblue: #2f2556;
+
+  --color-purple: #584c84;
+  --color-purple-light: #827caf;
+  --color-purple-ultra-light: #aeabd3;
+
+  --color-orange: #ffa582;
+  --color-orange-light: #ffd9ae;
+
+  --color-red: #ff5470;
+  --color-red-light: #ff807e;
+
+  --color-brown: #b78482;
+  --color-brown-light: #dda49f;
+  --color-brown-ultra-light: #e0bdc1;
+
+  --color-blue: #7789ef;
+
+  --color-teal: #5ec1ff;
+  --color-teal-light: #bae6ff;
+
+  --color-violett-ultra-light: #e2d3ff;
+  --color-violett-light: #be9bff;
+  --color-violett: #9968e2;
+
+  /* --color-reserved: #c9ffbf;
+  --color-reserved: #78d8b7;
+  --color-reserved: #34ada1;
+  --color-reserved: #257d9b;
+  --color-reserved: #25bcc6;
+  --color-reserved: #a0fff0;
+  --color-reserved: #84a594;
+  --color-reserved: #cfd3af;
+  --color-reserved: #fff2d1; */
+
+  /* z-indexes */
+
+  --z-index-modal: 1;
+
+  /* paddings and margins */
+
+  --padding-sm: 8px;
+  --padding-md: 16px;
+  --padding-lg: 24px;
+  --padding-lg2: 48px;
+
+  --margin-sm: 8px;
+  --margin-md: 16px;
+  --margin-lg: 24px;
+  --margin-lg2: 48px;
+
+  /* text */
+
+  --text-size-sm: 12px;
+  --text-size-md: 16px;
+  --text-size-lg: 24px;
+
+  /* border-radiuses */
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+}
