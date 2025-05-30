@@ -1,0 +1,5 @@
+{
+  "outputDir": "../client/public/img/cards",
+  "preventAntiBotDelayMS": 200,
+  "rewriteFiles": false
+}
