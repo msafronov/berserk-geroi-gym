@@ -1,19 +1,29 @@
-import { Text } from '@/ui/Text/Text';
+import { Card } from '@/ui/Card/Card';
 
 import './styles.css';
+import clsx from 'clsx';
 
 type Props = {
+  setNumber: number;
+  cardNumber: number;
+  isTopDeck?: boolean;
+  isBottomDeck?: boolean;
   onClick: () => void;
 };
 
-export const HeroCard = ({ onClick }: Props) => {
+export const HeroCard = ({ setNumber, cardNumber, isTopDeck, isBottomDeck, onClick }: Props) => {
   return (
     <div
-      className="start-screen-modal-hero-card"
+      className={clsx('start-screen-modal-hero-card', {
+        'decks-card-wrapper--color--red': isTopDeck,
+        'decks-card-wrapper--color--blue': isBottomDeck,
+      })}
       onClick={onClick}
     >
-      <Text size="sm" color="purple">выберите</Text>
-      <Text size="sm" color="purple">колоду</Text>
+      <Card
+        setNumber={setNumber}
+        cardNumber={cardNumber}
+      />
     </div>
   );
 };

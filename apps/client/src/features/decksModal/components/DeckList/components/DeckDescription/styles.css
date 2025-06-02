@@ -1,0 +1,5 @@
+.decks-deck-desctiption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

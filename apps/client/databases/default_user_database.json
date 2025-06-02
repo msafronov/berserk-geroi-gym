@@ -1,14 +1,14 @@
 {
   "name": "<DEFAULT_USER>",
   "settings": {
-    "lastSelectedDeckIdSideA": 0,
-    "lastSelectedDeckIdSideB": 1
+    "lastSelectedDeckIdTop": 0,
+    "lastSelectedDeckIdBottom": 1
   },
   "decks": [
     {
       "title": "Сайконо 2025",
       "description": "Original: https://berserkdeck.ru/decks/30625",
-      "hero": { "setNumber": 20, "cardNumber": 198 },
+      "hero": { "setNumber": 15, "cardNumber": 197 },
       "deck": [
         { "setNumber": 17, "cardNumber": 51 },
         { "setNumber": 17, "cardNumber": 51 },

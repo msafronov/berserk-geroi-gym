@@ -18,7 +18,10 @@
   position: fixed;
   background-color: var(--color-white);
   border: 1px solid var(--color-violett);
-  padding: var(--padding-lg2) var(--padding-md);
+  padding-left: var(--padding-md);
+  padding-right: var(--padding-md);
+  padding-top: var(--padding-lg2);
+  padding-bottom: var(--padding-lg);
 }
 
 .modal-content--size--sm {

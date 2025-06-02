@@ -14,8 +14,8 @@ export interface IDatabaseStoreDeck {
 }
 
 export interface IDatabaseStoreSettings {
-  lastSelectedDeckIdSideA: number;
-  lastSelectedDeckIdSideB: number;
+  lastSelectedDeckIdTop: number;
+  lastSelectedDeckIdBottom: number;
 }
 
 export interface IDatabaseStore {
@@ -25,4 +25,6 @@ export interface IDatabaseStore {
 }
 
 // @ts-ignore
-export const $databaseStore = atom<IDatabaseStore>(_DEFAULT_USER_DATABASE_);
+// подразумевается, что база данных в памяти не будет пустой,
+// поскольку будет проинициализированна перед стартом приложения
+export const $databaseStore = atom<IDatabaseStore>();

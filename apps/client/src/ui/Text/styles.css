@@ -19,6 +19,14 @@
   color: var(--color-violett);
 }
 
+.text--color--red {
+  color: var(--color-red);
+}
+
+.text--color--blue {
+  color: var(--color-blue);
+}
+
 .text--size--sm {
   font-size: var(--text-size-sm);
 }

@@ -3,10 +3,14 @@ import { useStore } from '@nanostores/preact';
 
 import * as Modal from '@/ui/Modal';
 import { Text } from '@/ui/Text/Text';
+import { Button } from '@/ui/Button/Button';
+
+import { openStartScreenModal } from '@/features/startScreenModal/actions';
 
 import { $decksModalStore } from './store';
 import { closeDecksModal } from './actions';
-import { openStartScreenModal } from '@/features/startScreenModal/actions';
+
+import { DeckList } from './components/DeckList/DeckList';
 
 export const DecksModal = memo(() => {
   const { isOpened } = useStore($decksModalStore);
@@ -32,8 +36,22 @@ export const DecksModal = memo(() => {
       </Modal.Header>
 
       <Modal.Body>
-        <Text>...</Text>
+        <DeckList />
       </Modal.Body>
+
+      <Modal.Footer>
+        <Button color="white" onClick={onClose}>
+          <Text color="black">
+            Закрыть
+          </Text>
+        </Button>
+
+        <Button color="white" onClick={() => {}}>
+          <Text color="black">
+            Создать новую колоду
+          </Text>
+        </Button>
+      </Modal.Footer>
     </Modal.Wrapper>
   );
 });

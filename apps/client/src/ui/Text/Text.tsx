@@ -5,7 +5,7 @@ import './styles.css';
 type Props = {
   tag?: 'span';
   size?: 'sm' | 'md' | 'lg';
-  color?: 'black' | 'white' | 'purple' | 'violett';
+  color?: 'black' | 'white' | 'purple' | 'violett' | 'red' | 'blue';
   weight?: 'light' | 'bold';
   style?: 'normal' | 'italic';
   children: string | number;

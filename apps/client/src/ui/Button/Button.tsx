@@ -5,21 +5,24 @@ import './styles.css';
 
 type Props = {
   size?: 'md';
-  color?: 'white' | 'violett';
+  color?: 'white' | 'violett' | 'red' | 'blue';
   disabled?: boolean;
   marginTop?: 'lg';
   children: JSX.Element;
+  onClick: () => void;
 };
 
 export const Button = ({
   size,
-  color = 'white',
+  color = 'violett',
   disabled,
   marginTop,
   children,
+  onClick,
 }: Props) => {
   return (
     <button
+      onClick={onClick}
       className={clsx('button', {
         [`button--size--${size}`]: size,
         [`button--color--${color}`]: color,
