@@ -1,3 +1,4 @@
+import type { JSX } from 'preact/jsx-runtime';
 import clsx from 'clsx';
 
 import './styles.css';
@@ -8,7 +9,8 @@ type Props = {
   color?: 'black' | 'white' | 'purple' | 'violett' | 'red' | 'blue';
   weight?: 'light' | 'bold';
   style?: 'normal' | 'italic';
-  children: string | number;
+  overflow?: 'elipsis';
+  children: (string | number | JSX.Element) | (string | number | JSX.Element)[];
 };
 
 export const Text = ({
@@ -17,6 +19,7 @@ export const Text = ({
   color,
   weight = 'light',
   style,
+  overflow,
   children,
 }: Props) => {
   const Tag = tag;
@@ -28,6 +31,7 @@ export const Text = ({
         [`text--color--${color}`]: color,
         [`text--weight--${weight}`]: weight,
         [`text--style--${style}`]: style,
+        [`text--overflow--${overflow}`]: overflow,
       })}
     >
       {children}

@@ -6,6 +6,7 @@ import { Text } from '@/ui/Text/Text';
 import { Button } from '@/ui/Button/Button';
 
 import { openStartScreenModal } from '@/features/startScreenModal/actions';
+import { openDeckEditorModalForEdit, openDeckEditorModalWithCreation } from '@/features/deckEditorModal/actions';
 
 import { $decksModalStore } from './store';
 import { closeDecksModal } from './actions';
@@ -18,6 +19,16 @@ export const DecksModal = memo(() => {
   const onClose = useCallback(() => {
     closeDecksModal();
     openStartScreenModal();
+  }, []);
+
+  const onDeckCreate = useCallback(() => {
+    closeDecksModal();
+    openDeckEditorModalWithCreation();
+  }, []);
+
+  const onDeckEdit = useCallback((deckId: string) => {
+    closeDecksModal();
+    openDeckEditorModalForEdit(deckId);
   }, []);
 
   if (!isOpened) {
@@ -36,7 +47,7 @@ export const DecksModal = memo(() => {
       </Modal.Header>
 
       <Modal.Body>
-        <DeckList />
+        <DeckList onDeckEdit={onDeckEdit} />
       </Modal.Body>
 
       <Modal.Footer>
@@ -46,7 +57,7 @@ export const DecksModal = memo(() => {
           </Text>
         </Button>
 
-        <Button color="white" onClick={() => {}}>
+        <Button color="white" onClick={onDeckCreate}>
           <Text color="black">
             Создать новую колоду
           </Text>

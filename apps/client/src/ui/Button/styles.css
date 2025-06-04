@@ -41,3 +41,7 @@
 .button--margin-top--lg {
   margin-top: var(--margin-lg2);
 }
+
+.button--margin-right--md {
+  margin-right: var(--margin-md);
+}

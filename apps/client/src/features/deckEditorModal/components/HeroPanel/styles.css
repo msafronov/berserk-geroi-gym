@@ -1,0 +1,7 @@
+.deck-editor-hero-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: var(--margin-md);
+}

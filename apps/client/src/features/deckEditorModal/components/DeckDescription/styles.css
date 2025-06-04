@@ -1,0 +1,6 @@
+.deck-editor-deck-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: var(--margin-md);
+}

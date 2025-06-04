@@ -1,8 +1,8 @@
 import { $decksModalStore } from "./store";
 
 import {
-  setLastSelectedDeckIdTop as databaseSetLastSelectedDeckIdTop,
-  setLastSelectedDeckIdBottom as databaseSetLastSelectedDeckIdBottom,
+  setLastSelectedDeckTop as databaseSetLastSelectedDeckIdTop,
+  setLastSelectedDeckBottom as databaseSetLastSelectedDeckIdBottom,
 } from '@/features/database/actions';
 
 export const openDecksModal = () => {
@@ -19,10 +19,10 @@ export const closeDecksModal = () => {
   });
 };
 
-export const setLastSelectedDeckIdTop = (deckId: number) => {
+export const setLastSelectedDeckTop = (deckId: string) => {
   databaseSetLastSelectedDeckIdTop(deckId);
 };
 
-export const setLastSelectedDeckIdBottom = (deckId: number) => {
+export const setLastSelectedDeckBottom = (deckId: string) => {
   databaseSetLastSelectedDeckIdBottom(deckId);
 };

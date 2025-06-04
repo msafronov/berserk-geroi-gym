@@ -1,0 +1,29 @@
+.deck-editor-deck-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  gap: 8px 16px;
+  row-gap: 16px;
+  column-gap: 24px;
+
+  width: 100%;
+  height: 30vh;
+
+  border: 2px dashed var(--color-purple-light);
+  box-sizing: border-box;
+  padding: var(--padding-sm);
+
+  overflow-y: scroll;
+
+  cursor: pointer;
+}
+
+.deck-editor-deck-cards:hover {
+  border: 2px solid var(--color-violett);
+}
+
+.deck-editor-deck-cards--center {
+  justify-content: center;
+  align-items: center;
+}

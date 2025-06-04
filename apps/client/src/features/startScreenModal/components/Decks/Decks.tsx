@@ -1,9 +1,7 @@
-import { useStore } from '@nanostores/preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 
 import type { IDatabaseStoreCard } from '@/features/database/store';
-import { $databaseStore } from '@/features/database/store';
-
+import { getLastSelectedDeckTop, getLastSelectedDeckBottom } from '@/features/database/actions';
 import { openDecksModal } from '@/features/decksModal/actions';
 
 import { Text } from '@/ui/Text/Text';
@@ -20,17 +18,9 @@ export const Decks = () => {
   const [selectedDeckTop, setSelectedDeckTop] = useState<IDatabaseStoreCard | null>(null);
   const [selectedDeckBottom, setSelectedDeckBottom] = useState<IDatabaseStoreCard | null>(null);
 
-  const {
-    decks,
-    settings: {
-      lastSelectedDeckIdTop,
-      lastSelectedDeckIdBottom,
-    },
-  } = useStore($databaseStore);
-
   useEffect(() => {
-    setSelectedDeckTop(decks[lastSelectedDeckIdTop]?.hero || null);
-    setSelectedDeckBottom(decks[lastSelectedDeckIdBottom]?.hero || null);
+    setSelectedDeckTop(getLastSelectedDeckTop()?.hero || null);
+    setSelectedDeckBottom(getLastSelectedDeckBottom()?.hero || null);
   }, []);
 
   const onHeroCardClick = useCallback(() => {

@@ -1,7 +1,9 @@
+import { nanoid } from "nanoid";
 import { getItem, setItem } from "@/features/localStorage/actions";
+import { CARD_EMPTY_CARD_NUMBER, CARD_EMPTY_SET_NUMBER } from '@/features/validation/const';
 
 import { LOCAL_STORAGE_KEY_DB } from "./const";
-import type { IDatabaseStore } from "./store";
+import type { IDatabaseStore, IDatabaseStoreDeck } from "./store";
 import { $databaseStore } from "./store";
 
 const saveUserDatabaseToLocalStorage = () => {
@@ -21,7 +23,11 @@ export const initializeUserDatabase = (): void => {
   }
 };
 
-export const setLastSelectedDeckIdTop = (deckId: number) => {
+export const getLastSelectedDeckTop = (): IDatabaseStoreDeck | null => {
+  return getDeckById($databaseStore.get().settings.lastSelectedDeckIdTop);
+};
+
+export const setLastSelectedDeckTop = (deckId: string) => {
   const databaseStore = $databaseStore.get();
 
   $databaseStore.set({
@@ -35,7 +41,12 @@ export const setLastSelectedDeckIdTop = (deckId: number) => {
   saveUserDatabaseToLocalStorage();
 };
 
-export const setLastSelectedDeckIdBottom = (deckId: number) => {
+
+export const getLastSelectedDeckBottom = (): IDatabaseStoreDeck | null => {
+  return getDeckById($databaseStore.get().settings.lastSelectedDeckIdBottom);
+};
+
+export const setLastSelectedDeckBottom = (deckId: string) => {
   const databaseStore = $databaseStore.get();
 
   $databaseStore.set({
@@ -44,6 +55,67 @@ export const setLastSelectedDeckIdBottom = (deckId: number) => {
       ...databaseStore.settings,
       lastSelectedDeckIdBottom: deckId,
     },
+  });
+
+  saveUserDatabaseToLocalStorage();
+};
+
+export const createDeck = (): IDatabaseStoreDeck => {
+  const databaseStore = $databaseStore.get();
+
+  const newDeck = {
+    id: nanoid(),
+    title: 'Без названия',
+    description: '',
+    hero: { setNumber: CARD_EMPTY_SET_NUMBER, cardNumber: CARD_EMPTY_CARD_NUMBER },
+    deck: [],
+    sideboard: [],
+  };
+
+  $databaseStore.set({
+    ...databaseStore,
+    decks: [
+      ...databaseStore.decks,
+      newDeck,
+    ],
+  });
+
+  saveUserDatabaseToLocalStorage();
+
+  return { ...newDeck };
+};
+
+export const getDeckById = (deckId: string): IDatabaseStoreDeck | null => {
+  return $databaseStore.get().decks.find((deck) => {
+    return deck.id === deckId;
+  }) || null;
+};
+
+export const removeDeckById = (deckIdForRemove: string) => {
+  const databaseStore = $databaseStore.get();
+
+  $databaseStore.set({
+    ...databaseStore,
+    decks: databaseStore.decks.filter((deck) => {
+      return deck.id !== deckIdForRemove;
+    }),
+  });
+
+  saveUserDatabaseToLocalStorage();
+};
+
+export const updateDeck = (deckForUpdate: IDatabaseStoreDeck) => {
+  const databaseStore = $databaseStore.get();
+
+  $databaseStore.set({
+    ...databaseStore,
+    decks: databaseStore.decks.map((deck) => {
+      if (deck.id === deckForUpdate.id) {
+        return deckForUpdate;
+      }
+
+      return deck;
+    }),
   });
 
   saveUserDatabaseToLocalStorage();

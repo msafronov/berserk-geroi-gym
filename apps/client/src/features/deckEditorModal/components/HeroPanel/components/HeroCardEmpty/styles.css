@@ -1,0 +1,17 @@
+.deck-editor-hero-card-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 170px;
+  border: 2px dashed var(--color-purple-light);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+}
+
+.deck-editor-hero-card-empty:hover {
+  opacity: 0.8;
+  border: 2px dashed var(--color-purple-ultra-light);
+}

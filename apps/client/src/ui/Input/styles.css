@@ -1,0 +1,13 @@
+.input {
+  border: 1px solid var(--color-black);
+  padding: var(--padding-sm);
+  font-family: 'Roboto';
+  font-size: var(--font-md);
+  color: var(--color-black);
+}
+
+.input--state--error {
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
+  outline: 1px solid var(--color-red);;
+}

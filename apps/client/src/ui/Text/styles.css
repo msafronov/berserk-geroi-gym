@@ -54,3 +54,9 @@
 .text--style--italic {
   font-style: italic;
 }
+
+.text--overflow--elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

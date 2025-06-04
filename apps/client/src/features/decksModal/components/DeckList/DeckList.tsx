@@ -11,9 +11,13 @@ import { Deck } from './components/Deck/Deck';
 import { CardWrapper } from './components/CardWrapper/CardWrapper';
 import { CardWrapperButtons } from './components/CardWrapperButtons/CardWrapperButtons';
 import { DeckDescription } from './components/DeckDescription/DeckDescription';
-import { setLastSelectedDeckIdBottom, setLastSelectedDeckIdTop } from '../../actions';
+import { setLastSelectedDeckBottom, setLastSelectedDeckTop } from '../../actions';
 
-export const DeckList = () => {
+type Props = {
+  onDeckEdit: (deckId: string) => void;
+};
+
+export const DeckList = ({ onDeckEdit }: Props) => {
   const {
     decks,
     settings: {
@@ -24,9 +28,9 @@ export const DeckList = () => {
 
   return (
     <DeckListWrapper>
-      {decks.map((deck, deckId) => {
-        const isTopDeck = lastSelectedDeckIdTop === deckId;
-        const isBottomDeck = lastSelectedDeckIdBottom === deckId;
+      {decks.map((deck) => {
+        const isTopDeck = lastSelectedDeckIdTop === deck.id;
+        const isBottomDeck = lastSelectedDeckIdBottom === deck.id;
 
         return (
           <Deck>
@@ -37,7 +41,7 @@ export const DeckList = () => {
               />
 
               <CardWrapperButtons>
-                <Button onClick={() => setLastSelectedDeckIdTop(deckId)} color="red">
+                <Button onClick={() => setLastSelectedDeckTop(deck.id)} color="red">
                   <Text
                     size="sm"
                     weight={isTopDeck ? 'bold' : undefined}
@@ -46,7 +50,7 @@ export const DeckList = () => {
                   </Text>
                 </Button>
 
-                <Button onClick={() => setLastSelectedDeckIdBottom(deckId)} color="blue">
+                <Button onClick={() => setLastSelectedDeckBottom(deck.id)} color="blue">
                   <Text
                     size="sm"
                     weight={isBottomDeck ? 'bold' : undefined}
@@ -55,7 +59,7 @@ export const DeckList = () => {
                   </Text>
                 </Button>
 
-                <Button onClick={() => {}}>
+                <Button onClick={() => onDeckEdit(deck.id)}>
                   <Text
                     size="sm"
                     color="white"
@@ -67,15 +71,15 @@ export const DeckList = () => {
             </CardWrapper>
 
             <DeckDescription>
-              <Text weight="bold">{deck.title}</Text>
+              <Text weight="bold" overflow="elipsis">{deck.title}</Text>
               <Text>{`${deck.deck.length} / ${deck.sideboard.length}`}</Text>
 
               {isTopDeck && (
-                <Text weight="bold" color="red">(Колода наверху)</Text>
+                <Text weight="bold" color="red">Колода наверху</Text>
               )}
 
               {isBottomDeck && (
-                <Text weight="bold" color="blue">(Колода внизу)</Text>
+                <Text weight="bold" color="blue">Колода внизу</Text>
               )}
             </DeckDescription>
           </Deck>

@@ -12,6 +12,7 @@
   "dependencies": {
     "@nanostores/preact": "^1.0.0",
     "clsx": "^2.1.1",
+    "nanoid": "^5.1.5",
     "nanostores": "^1.0.1",
     "preact": "^10.26.6"
   },

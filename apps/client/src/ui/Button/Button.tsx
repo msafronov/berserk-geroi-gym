@@ -8,8 +8,9 @@ type Props = {
   color?: 'white' | 'violett' | 'red' | 'blue';
   disabled?: boolean;
   marginTop?: 'lg';
+  marginRight?: 'md';
   children: JSX.Element;
-  onClick: () => void;
+  onClick: (event: MouseEvent) => void;
 };
 
 export const Button = ({
@@ -17,6 +18,7 @@ export const Button = ({
   color = 'violett',
   disabled,
   marginTop,
+  marginRight,
   children,
   onClick,
 }: Props) => {
@@ -28,6 +30,7 @@ export const Button = ({
         [`button--color--${color}`]: color,
         'button--disabled': disabled,
         [`button--margin-top--${marginTop}`]: marginTop,
+        [`button--margin-right--${marginRight}`]: marginRight,
       })}
     >
       {children}

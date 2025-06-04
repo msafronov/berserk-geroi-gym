@@ -6,6 +6,7 @@ export interface IDatabaseStoreCard {
 }
 
 export interface IDatabaseStoreDeck {
+  id: string;
   title: string;
   description: string;
   hero: IDatabaseStoreCard;
@@ -14,8 +15,8 @@ export interface IDatabaseStoreDeck {
 }
 
 export interface IDatabaseStoreSettings {
-  lastSelectedDeckIdTop: number;
-  lastSelectedDeckIdBottom: number;
+  lastSelectedDeckIdTop: string;
+  lastSelectedDeckIdBottom: string;
 }
 
 export interface IDatabaseStore {
