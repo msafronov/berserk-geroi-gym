@@ -17,6 +17,8 @@ export interface IDatabaseStoreDeck {
 export interface IDatabaseStoreSettings {
   lastSelectedDeckIdTop: string;
   lastSelectedDeckIdBottom: string;
+  autoDealCardsCount: number;
+  initialCoinCount: number;
 }
 
 export interface IDatabaseStore {

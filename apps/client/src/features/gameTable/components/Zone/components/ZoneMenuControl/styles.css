@@ -1,0 +1,7 @@
+.game-table-zone-menu-control {
+  position: absolute;
+  top: var(--margin-sm);
+  right:  var(--margin-sm);
+
+  z-index: var(--z-index--level-2);
+}

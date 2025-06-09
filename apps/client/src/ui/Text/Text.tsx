@@ -6,7 +6,7 @@ import './styles.css';
 type Props = {
   tag?: 'span';
   size?: 'sm' | 'md' | 'lg';
-  color?: 'black' | 'white' | 'purple' | 'violett' | 'red' | 'blue';
+  color?: 'black' | 'white' | 'purple' | 'violett' | 'red' | 'blue' | 'gray';
   weight?: 'light' | 'bold';
   style?: 'normal' | 'italic';
   overflow?: 'elipsis';

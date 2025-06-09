@@ -1,0 +1,11 @@
+.game-table-zone-title {
+  position: absolute;
+  top: var(--padding-sm);
+  left: var(--padding-sm);
+
+  width: 90%;
+
+  display: flex;
+
+  z-index: var(--z-index--level-2);
+}

@@ -4,12 +4,15 @@ body {
   width: 100vw;
   height: 100vh;
 
+  background-color: var(--color-white);
+
   user-select: none;
 
   /* colors */
 
-  --color-white: #ffffff;
-  --color-black: #000000;
+  --color-white: #f7f7f7;
+  --color-white-ultra-light: #ffffff;
+  --color-black: #111111;
   --color-gray: #cccccc;
   --color-gray-light: #eeeeee;
 
@@ -25,6 +28,8 @@ body {
   --color-red: #ff5470;
   --color-red-light: #ff807e;
 
+  --color-green: #78d8b7;
+
   --color-brown: #b78482;
   --color-brown-light: #dda49f;
   --color-brown-ultra-light: #e0bdc1;
@@ -39,7 +44,6 @@ body {
   --color-violett: #9968e2;
 
   /* --color-reserved: #c9ffbf;
-  --color-reserved: #78d8b7;
   --color-reserved: #34ada1;
   --color-reserved: #257d9b;
   --color-reserved: #25bcc6;
@@ -50,14 +54,20 @@ body {
 
   /* z-indexes */
 
-  --z-index-modal: 1;
+  --z-index-level-1: 0;
+  --z-index-level-2: 1;
+  --z-index-level-3: 2;
+  --z-index-level-4: 3;
+  --z-index-level-5: 4;
 
   /* paddings and margins */
 
+  --padding-sm2: 4px;
   --padding-sm: 8px;
   --padding-md: 16px;
   --padding-lg: 24px;
-  --padding-lg2: 48px;
+  --padding-lg2: 32px;
+  --padding-lg3: 48px;
 
   --margin-sm: 8px;
   --margin-md: 16px;
@@ -75,6 +85,11 @@ body {
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 16px;
+
+  /* card */
+
+  --card-width: 120px;
+  --card-height: 170px;
 }
 
 @font-face {

@@ -1,9 +1,16 @@
 .card {
-  width: 120px;
-  height: 170px;
+  width: var(--card-width);
+  height: var(--card-height);
   border: 1px solid black;
   border-radius: var(--border-radius-md);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  pointer-events: none;
+}
+
+.card--size--lg2 {
+  width: calc(var(--card-width) * 3);
+  height: calc(var(--card-height) * 3);
 }

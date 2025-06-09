@@ -1,0 +1,5 @@
+.game-table-zone-active-card-menu-button {
+  position: absolute;
+  top: var(--margin-sm);
+  right:  var(--margin-sm);
+}

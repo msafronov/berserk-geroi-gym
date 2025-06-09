@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
   padding-top: 80px;
-  z-index: var(--z-index-modal);
+  z-index: var(--z-index-level-4);
   background-color: rgba(0,0,0,0.4);
   overflow-y: auto;
 }
@@ -20,7 +20,7 @@
   border: 1px solid var(--color-violett);
   padding-left: var(--padding-md);
   padding-right: var(--padding-md);
-  padding-top: var(--padding-lg2);
+  padding-top: var(--padding-lg3);
   padding-bottom: var(--padding-lg);
 }
 

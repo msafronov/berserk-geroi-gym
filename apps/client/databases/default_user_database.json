@@ -2,7 +2,9 @@
   "name": "<DEFAULT_USER>",
   "settings": {
     "lastSelectedDeckIdTop": "ZksARwBNDijoeSOI5qEAp",
-    "lastSelectedDeckIdBottom": "VkuhryV1JsFJmiNkRU_cX"
+    "lastSelectedDeckIdBottom": "VkuhryV1JsFJmiNkRU_cX",
+    "autoDealCardsCount": 4,
+    "initialCoinCount": 10
   },
   "decks": [
     {

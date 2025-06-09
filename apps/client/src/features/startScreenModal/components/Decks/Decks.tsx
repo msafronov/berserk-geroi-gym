@@ -8,7 +8,7 @@ import { Text } from '@/ui/Text/Text';
 import { Image } from '@/ui/Image/Image';
 import { Button } from '@/ui/Button/Button';
 
-import { closeStartScreenModal } from '../../actions';
+import { closeStartScreenModal, start } from '../../actions';
 import { HeroCard } from './components/HeroCard/HeroCard';
 import { HeroCardEmpty } from './components/HeroCardEmpty/HeroCardEmpty';
 
@@ -26,6 +26,11 @@ export const Decks = () => {
   const onHeroCardClick = useCallback(() => {
     closeStartScreenModal();
     openDecksModal();
+  }, []);
+
+  const onStartClick = useCallback(() => {
+    closeStartScreenModal();
+    start();
   }, []);
 
   return (
@@ -75,7 +80,7 @@ export const Decks = () => {
         marginTop="lg"
         color="violett"
         disabled={false}
-        onClick={() => {}}
+        onClick={onStartClick}
       >
         <Text
           color="white"

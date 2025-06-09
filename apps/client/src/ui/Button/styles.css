@@ -21,6 +21,14 @@
   width: 30%;
 }
 
+.button--size--lg {
+  width: 80%;
+}
+
+.button--size--lg2 {
+  width: 100%;
+}
+
 .button--color--white {
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
@@ -38,10 +46,26 @@
   background-color: var(--color-blue);
 }
 
+.button--margin-bottom--md {
+  margin-bottom: var(--margin-md);
+}
+
 .button--margin-top--lg {
   margin-top: var(--margin-lg2);
 }
 
 .button--margin-right--md {
   margin-right: var(--margin-md);
+}
+
+.button--padding--sm {
+  padding: var(--padding-sm);
+}
+
+.button--padding--sm2 {
+  padding: var(--padding-sm2);
+}
+
+.button--border--none {
+  border: none;
 }

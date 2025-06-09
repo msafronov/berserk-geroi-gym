@@ -1,3 +1,5 @@
+import { startGame } from "@/features/gameTable/actions/index";
+
 import { $startScreenModalStore } from "./store";
 
 export const openStartScreenModal = () => {
@@ -12,4 +14,8 @@ export const closeStartScreenModal = () => {
     ...$startScreenModalStore.get(),
     isOpened: false,
   });
+};
+
+export const start = () => {
+  startGame();
 };

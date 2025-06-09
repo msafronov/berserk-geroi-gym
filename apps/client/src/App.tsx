@@ -7,6 +7,8 @@ import { openStartScreenModal } from '@/features/startScreenModal/actions';
 import { initializeUserDatabase } from '@/features/database/actions';
 import { DeckEditorModal } from '@/features/deckEditorModal';
 import { CardPickerModal } from '@/features/cardPickerModal';
+import { GameTable } from '@/features/gameTable';
+import { ActiveCardZoom } from '@/features/activeCardZoom';
 
 export const App = () => {
   useEffect(() => {
@@ -20,6 +22,10 @@ export const App = () => {
       <DecksModal />
       <DeckEditorModal />
       <CardPickerModal />
+
+      <GameTable />
+
+      <ActiveCardZoom />
     </>
   );
 };

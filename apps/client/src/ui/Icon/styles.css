@@ -1,6 +1,4 @@
 .icon {
-  width: 32px;
-  height: 32px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -10,10 +8,44 @@
   cursor: pointer;
 }
 
+.icon--size--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--size--md {
+  width: 32px;
+  height: 32px;
+}
+
 .icon--image--telegram {
   background-image: url("/img/icons/icon-telegram.svg");
 }
 
 .icon--image--github {
   background-image: url("/img/icons/icon-github.svg");
+}
+
+.icon--image--close-card {
+  background-image: url("/img/icons/icon-close-card.svg");
+}
+
+.icon--image--open-card {
+  background-image: url("/img/icons/icon-open-card.svg");
+}
+
+.icon--image--dots-vertical {
+  background-image: url("/img/icons/icon-dots-vertical.svg");
+}
+
+.icon--image--close {
+  background-image: url("/img/icons/icon-close.svg");
+}
+
+.icon--image--arrow-left {
+  background-image: url("/img/icons/icon-arrow-left.svg");
+}
+
+.icon--image--arrow-right {
+  background-image: url("/img/icons/icon-arrow-right.svg");
 }

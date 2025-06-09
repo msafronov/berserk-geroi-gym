@@ -1,0 +1,15 @@
+.game-table-wrapper-panel {
+  display: flex;
+  position: relative;
+}
+
+.game-table-wrapper-panel--size--sm {
+  flex-grow: 0;
+}
+
+.game-table-wrapper-panel--size--lg {
+  flex-grow: 100;
+
+  /* хак: без этого не появится вертикальный скролл у flex контейнера с flex grow */
+  min-height: 100px;
+}

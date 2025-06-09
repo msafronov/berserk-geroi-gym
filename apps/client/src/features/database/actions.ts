@@ -3,7 +3,7 @@ import { getItem, setItem } from "@/features/localStorage/actions";
 import { CARD_EMPTY_CARD_NUMBER, CARD_EMPTY_SET_NUMBER } from '@/features/validation/const';
 
 import { LOCAL_STORAGE_KEY_DB } from "./const";
-import type { IDatabaseStore, IDatabaseStoreDeck } from "./store";
+import type { IDatabaseStore, IDatabaseStoreDeck, IDatabaseStoreSettings } from "./store";
 import { $databaseStore } from "./store";
 
 const saveUserDatabaseToLocalStorage = () => {
@@ -41,6 +41,9 @@ export const setLastSelectedDeckTop = (deckId: string) => {
   saveUserDatabaseToLocalStorage();
 };
 
+export const getSettings = (): IDatabaseStoreSettings => {
+  return $databaseStore.get().settings;
+};
 
 export const getLastSelectedDeckBottom = (): IDatabaseStoreDeck | null => {
   return getDeckById($databaseStore.get().settings.lastSelectedDeckIdBottom);

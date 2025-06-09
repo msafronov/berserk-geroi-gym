@@ -1,0 +1,28 @@
+.game-table-card-settings-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 30px;
+  margin: 2px;
+
+  border: 2px solid var(--color-black);
+  border-radius: var(--border-radius-lg);
+}
+
+.game-table-card-settings-counter--color--red {
+  background-color: var(--color-red);
+}
+
+.game-table-card-settings-counter--color--green {
+  background-color: var(--color-green);
+}
+
+.game-table-card-settings-counter--color--white {
+  background-color: var(--color-white);
+}
+
+.game-table-card-settings-counter--color--black {
+  background-color: var(--color-black);
+}

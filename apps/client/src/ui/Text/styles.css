@@ -27,6 +27,10 @@
   color: var(--color-blue);
 }
 
+.text--color--gray {
+  color: var(--color-gray);
+}
+
 .text--size--sm {
   font-size: var(--text-size-sm);
 }

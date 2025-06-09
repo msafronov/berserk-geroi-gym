@@ -1,0 +1,9 @@
+.game-table-zone-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: var(--card-width);
+  height: var(--card-height);
+}

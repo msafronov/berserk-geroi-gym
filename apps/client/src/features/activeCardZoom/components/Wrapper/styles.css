@@ -1,0 +1,8 @@
+.active-card-zoom {
+  position: fixed;
+
+  top: calc((100vh / 2) - (var(--card-height) * 2));
+  right: 5vw;
+
+  z-index: var(--z-index-level-5);
+}

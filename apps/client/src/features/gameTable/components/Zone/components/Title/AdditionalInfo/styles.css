@@ -1,0 +1,9 @@
+.game-table-zone-title-additional-info {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-sm);
+
+  width: 100%;
+
+  margin-left: var(--margin-lg);
+}

@@ -1,0 +1,16 @@
+.game-table-zone-content {
+  opacity: 0.6;
+  gap: 8px;
+
+  z-index: var(--z-index--level-1);
+}
+
+.game-table-zone-content--orientation--horizontal {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.game-table-zone-content--active {
+  opacity: 1;
+}

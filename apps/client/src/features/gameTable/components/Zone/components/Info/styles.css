@@ -1,0 +1,16 @@
+.game-table-zone-info {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+  border-left: 1px solid var(--color-black);
+  border-top: 1px solid var(--color-black);
+
+  background-color: var(--color-violett);
+
+  right: 0;
+  bottom: 0;
+}
