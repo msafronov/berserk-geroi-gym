@@ -14,6 +14,7 @@ import './styles.css';
 
 type Props = {
   cards: IDatabaseStoreCard[];
+  onDeckCardsClick: () => void;
   onAddCard: (card: IDatabaseStoreCard) => void;
   onRemoveCard: (card: IDatabaseStoreCard) => void;
 };
@@ -22,7 +23,7 @@ interface IDatabaseStoreCardWithCount extends IDatabaseStoreCard {
   count: number;
 }
 
-export const DeckCards = ({ cards, onAddCard, onRemoveCard }: Props) => {
+export const DeckCards = ({ cards, onDeckCardsClick, onAddCard, onRemoveCard }: Props) => {
   const [cardsWithCount, setCardsWithCount] = useState<IDatabaseStoreCardWithCount[]>([]);
 
   useLayoutEffect(() => {
@@ -64,10 +65,6 @@ export const DeckCards = ({ cards, onAddCard, onRemoveCard }: Props) => {
     setCardsWithCount(groupedCards);
   }, [cards]);
 
-  const onWrapperClick = useCallback(() => {
-    // 
-  }, []);
-
   const onIncreaseClick = useCallback((event: MouseEvent, card: IDatabaseStoreCardWithCount) => {
     event.stopPropagation();
     onAddCard({ setNumber: card.setNumber, cardNumber: card.cardNumber });
@@ -89,7 +86,7 @@ export const DeckCards = ({ cards, onAddCard, onRemoveCard }: Props) => {
           'deck-editor-deck-cards',
           'deck-editor-deck-cards--center',
         )}
-        onClick={onWrapperClick}
+        onClick={onDeckCardsClick}
       >
         <Text size="sm" color="purple">
           Нажмите, чтобы добавить карты
@@ -101,7 +98,7 @@ export const DeckCards = ({ cards, onAddCard, onRemoveCard }: Props) => {
   return (
     <div
       className="deck-editor-deck-cards"
-      onClick={onWrapperClick}
+      onClick={onDeckCardsClick}
     >
       {cardsWithCount.map((card) => {
         return (

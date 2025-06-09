@@ -3,58 +3,21 @@ const fs = require('fs');
 const https = require('https');
 
 const config = require('./config.json');
+const { downloadList } = require('./src/index');
 
-const cardNumberRangeInclusive = (from, to) => {
-  const result = [];
-
-  for (let i = from; i <= to; i++) {
-    result.push(i);
-  }
-
-  return result;
-};
-
-const downloadList = [
-  // пробуждение драконов
-  { setNumber: 14, minCardNumber: 1, maxCardNumber: 192, notExistCardNumbers: [], pfCardNumbers: [] },
-
-  // возвращение древних
-  { setNumber: 15, minCardNumber: 1, maxCardNumber: 197, notExistCardNumbers: [], pfCardNumbers: [] },
-
-  // ветер перемен
-  { setNumber: 16, minCardNumber: 1, maxCardNumber: 225, notExistCardNumbers: [], pfCardNumbers: [...cardNumberRangeInclusive(194, 224)] },
-
-  // переполох в канор-вейне
-  { setNumber: 17, minCardNumber: 1, maxCardNumber: 197, notExistCardNumbers: [], pfCardNumbers: [...cardNumberRangeInclusive(192, 196)] },
-
-  // огни большого города
-  { setNumber: 18, minCardNumber: 1, maxCardNumber: 229, notExistCardNumbers: [196], pfCardNumbers: [...cardNumberRangeInclusive(190, 194), ...cardNumberRangeInclusive(196, 229)] },
-
-  // большая игра
-  { setNumber: 19, minCardNumber: 1, maxCardNumber: 38, notExistCardNumbers: [], pfCardNumbers: [4, 14, 32, 37, 38] },
-
-  // золотой век
-  { setNumber: 21, minCardNumber: 1, maxCardNumber: 234, notExistCardNumbers: [205, 206, 207, 208, 211, 213, 214, 215, 216, 221, 225, 226], pfCardNumbers: [190, ...cardNumberRangeInclusive(196, 200), ...cardNumberRangeInclusive(203, 234)] },
-
-  // обучающий набор 2025
-  { setNumber: 22, minCardNumber: 1, maxCardNumber: 74, notExistCardNumbers: [...cardNumberRangeInclusive(45, 67), 69], pfCardNumbers: [68, 70] },
-
-  // раммарат
-  // { setNumber: 23, minCardNumber: 1, maxCardNumber: 207, notExistCardNumbers: [], pfCardNumbers: [] },
-];
-
-const getCardImageURLRegular = (setNumber, cardNumber) => {
+const getCardImageURLRegular = (setNumber: number, cardNumber: number) => {
   return `https://www.berserkdeck.ru/dev/api/images/cards-heroes/${setNumber}/${cardNumber}/regular`;
 };
 
-const getCardImageURLPf = (setNumber, cardNumber) => {
+const getCardImageURLPf = (setNumber: number, cardNumber: number) => {
   return `https://www.berserkdeck.ru/dev/api/images/cards-heroes/${setNumber}/${cardNumber}/pf`;
 };
 
-const downloadCardImageFile = (cardImageDir, cardImageURL) => {
+const downloadCardImageFile = (cardImageDir: string, cardImageURL: string): Promise<void> => {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(cardImageDir);
 
+    // @ts-ignore
     https.get(cardImageURL, (response) => {
       response.pipe(file);
 
@@ -62,7 +25,7 @@ const downloadCardImageFile = (cardImageDir, cardImageURL) => {
         reject();
       });
 
-      file.on('finish', () => {      
+      file.on('finish', () => {
         file.close();
         resolve();
       });
@@ -70,10 +33,11 @@ const downloadCardImageFile = (cardImageDir, cardImageURL) => {
   });
 };
 
-const makePreventAntiBotDelay = (time) => {
+const makePreventAntiBotDelay = (time: number) => {
   return new Promise((resolve) => {
     if (time < 0) {
       resolve(0);
+      return;
     }
 
     const randomTimeMin = Math.round(time / 2);

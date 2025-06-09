@@ -9,7 +9,7 @@ type Props = {
   disabled?: boolean;
   marginTop?: 'lg';
   marginRight?: 'md';
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
   onClick: (event: MouseEvent) => void;
 };
 

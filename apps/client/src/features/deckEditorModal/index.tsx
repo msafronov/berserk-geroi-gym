@@ -6,6 +6,7 @@ import { Text } from '@/ui/Text/Text';
 import { Button } from '@/ui/Button/Button';
 
 import { openDecksModal } from '@/features/decksModal/actions';
+import { openCardPickerModal } from '@/features/cardPickerModal/actions';
 
 import { $deckEditorModalStore } from './store';
 import {
@@ -39,6 +40,27 @@ export const DeckEditorModal = memo(() => {
     openDecksModal();
   }, []);
 
+  const onHeroClick = useCallback(() => {
+    openCardPickerModal({
+      title: 'Выберите героя',
+      onSuccess: (...args) => console.log('>>> onHeroClick', ...args),
+    });
+  }, []);
+
+  const onDeckCardsClick = useCallback(() => {
+    openCardPickerModal({
+      title: 'Выберите карту (основная колода)',
+      onSuccess: (...args) => console.log('>>> onDeckCardsClick', ...args),
+    });
+  }, []);
+
+  const onSideboardCardsClick = useCallback(() => {
+    openCardPickerModal({
+      title: 'Выберите карту (сайдборд)',
+      onSuccess: (...args) => console.log('>>> onSideboardCardsClick', ...args),
+    });
+  }, []);
+
   if (!isOpened) {
     return null;
   }
@@ -58,7 +80,7 @@ export const DeckEditorModal = memo(() => {
         <HeroPanel
           setNumber={deck.hero.setNumber}
           cardNumber={deck.hero.cardNumber}
-          onClick={() => {}}
+          onClick={onHeroClick}
         />
 
         <DeckSwitch
@@ -69,6 +91,7 @@ export const DeckEditorModal = memo(() => {
         {activeSwitchItem === 'SWITCH_ITEM_DECK' && (
           <DeckCards
             cards={deck.deck}
+            onDeckCardsClick={onDeckCardsClick}
             onAddCard={addCardToDeck}
             onRemoveCard={removeCardFromDeck}
           />
@@ -77,6 +100,7 @@ export const DeckEditorModal = memo(() => {
         {activeSwitchItem === 'SWITCH_ITEM_SIDEBOARD' && (
           <DeckCards
             cards={deck.sideboard}
+            onDeckCardsClick={onSideboardCardsClick}
             onAddCard={addCardToSideboard}
             onRemoveCard={removeCardFromSideboard}
           />

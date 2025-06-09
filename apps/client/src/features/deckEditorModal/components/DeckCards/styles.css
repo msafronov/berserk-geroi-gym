@@ -26,4 +26,5 @@
 .deck-editor-deck-cards--center {
   justify-content: center;
   align-items: center;
+  align-content: center;
 }

@@ -10,6 +10,7 @@
     "lint": "echo \"Error: no lint specified\""
   },
   "dependencies": {
+    "card-images-downloader": "file:../card-images-downloader",
     "@nanostores/preact": "^1.0.0",
     "clsx": "^2.1.1",
     "nanoid": "^5.1.5",
