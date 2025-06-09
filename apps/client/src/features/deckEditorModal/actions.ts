@@ -134,6 +134,21 @@ export const removeCardFromSideboard = (cardForRemove: IDatabaseStoreCard) => {
   updateDeck(newDeck);
 };
 
+export const changeHero = (heroCard: IDatabaseStoreCard) => {
+  const deck = $deckEditorModalStore.get().deck;
+  const newDeck = {
+    ...deck,
+    hero: heroCard,
+  };
+
+  $deckEditorModalStore.set({
+    ...$deckEditorModalStore.get(),
+    deck: newDeck,
+  });
+
+  updateDeck(newDeck);
+}
+
 export const setTitle = (title: string) => {
   const deck = $deckEditorModalStore.get().deck;
   const newDeck = { ...deck, title };

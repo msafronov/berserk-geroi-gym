@@ -16,6 +16,7 @@ import {
   addCardToSideboard,
   removeCardFromDeck,
   removeCardFromSideboard,
+  changeHero,
 } from './actions';
 
 import { DeckTitle } from './components/DeckTitle/DeckTitle';
@@ -43,21 +44,27 @@ export const DeckEditorModal = memo(() => {
   const onHeroClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите героя',
-      onSuccess: (...args) => console.log('>>> onHeroClick', ...args),
+      onSuccess: (setNumber, cardNumber) => {
+        changeHero({ setNumber, cardNumber });
+      },
     });
   }, []);
 
   const onDeckCardsClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите карту (основная колода)',
-      onSuccess: (...args) => console.log('>>> onDeckCardsClick', ...args),
+      onSuccess: (setNumber, cardNumber) => {
+        addCardToDeck({ setNumber, cardNumber });
+      },
     });
   }, []);
 
   const onSideboardCardsClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите карту (сайдборд)',
-      onSuccess: (...args) => console.log('>>> onSideboardCardsClick', ...args),
+      onSuccess: (setNumber, cardNumber) => {
+        addCardToSideboard({ setNumber, cardNumber });
+      },
     });
   }, []);
 
