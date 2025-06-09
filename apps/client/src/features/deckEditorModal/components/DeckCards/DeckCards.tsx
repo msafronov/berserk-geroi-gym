@@ -27,28 +27,18 @@ export const DeckCards = ({ cards, onDeckCardsClick, onAddCard, onRemoveCard }: 
   const [cardsWithCount, setCardsWithCount] = useState<IDatabaseStoreCardWithCount[]>([]);
 
   useLayoutEffect(() => {
-    // TODO: происходит баг с изменением порядка карт при increase / decrease
+    // группировка карт по "setNumber_cardNumber" -> count
 
-    // группировка карт по setNumber -> cardNumber -> count
-
-    const dictionary = new Map<number, Map<number, number>>();
+    const dictionary: Record<string, number> = {};
 
     cards.forEach((card) => {
-      if (dictionary.has(card.setNumber)) {
+      const index = `${card.setNumber}_${card.cardNumber}`;
+
+      if (dictionary[index]) {
         // @ts-ignore
-        if (dictionary.get(card.setNumber).has(card.cardNumber)) {
-          // @ts-ignore
-          dictionary.get(card.setNumber).set(
-            card.cardNumber,
-            // @ts-ignore
-            dictionary.get(card.setNumber).get(card.cardNumber) + 1,
-          );
-        } else {
-          // @ts-ignore
-          dictionary.get(card.setNumber).set(card.cardNumber, 1);
-        }
+        dictionary[index]++;
       } else {
-        dictionary.set(card.setNumber, new Map().set(card.cardNumber, 1));
+        dictionary[index] = 1;
       }
     });
 
@@ -56,11 +46,11 @@ export const DeckCards = ({ cards, onDeckCardsClick, onAddCard, onRemoveCard }: 
 
     const groupedCards: IDatabaseStoreCardWithCount[] = [];
 
-    for (let [setNumber, cardNumberToCountMap] of dictionary) {
-      for (let [cardNumber, count] of cardNumberToCountMap) {
-        groupedCards.push({ setNumber, cardNumber, count });
-      }
-    }
+    Object.keys(dictionary).sort().forEach((index) => {
+      const [setNumber, cardNumber] = index.split('_').map(token => Number(token));
+
+      groupedCards.push({ setNumber, cardNumber, count: dictionary[index] });
+    });
 
     setCardsWithCount(groupedCards);
   }, [cards]);
