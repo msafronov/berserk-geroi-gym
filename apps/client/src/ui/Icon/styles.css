@@ -49,3 +49,15 @@
 .icon--image--arrow-right {
   background-image: url("/img/icons/icon-arrow-right.svg");
 }
+
+.icon--image--start-new-game {
+  background-image: url("/img/icons/icon-start-new-game.svg");
+}
+
+.icon--image--home {
+  background-image: url("/img/icons/icon-home.svg");
+}
+
+.icon--image--plus {
+  background-image: url("/img/icons/icon-plus.svg");
+}

@@ -10,6 +10,7 @@ type Props = {
   weight?: 'light' | 'bold';
   style?: 'normal' | 'italic';
   overflow?: 'elipsis';
+  textAlign?: 'center';
   children: (string | number | JSX.Element) | (string | number | JSX.Element)[];
 };
 
@@ -20,6 +21,7 @@ export const Text = ({
   weight = 'light',
   style,
   overflow,
+  textAlign,
   children,
 }: Props) => {
   const Tag = tag;
@@ -32,6 +34,7 @@ export const Text = ({
         [`text--weight--${weight}`]: weight,
         [`text--style--${style}`]: style,
         [`text--overflow--${overflow}`]: overflow,
+        [`text--text-align--${textAlign}`]: textAlign,
       })}
     >
       {children}

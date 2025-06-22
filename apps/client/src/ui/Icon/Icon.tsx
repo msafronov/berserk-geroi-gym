@@ -11,7 +11,10 @@ type Props = {
     | 'dots-vertical'
     | 'close'
     | 'arrow-left'
-    | 'arrow-right';
+    | 'arrow-right'
+    | 'start-new-game'
+    | 'home'
+    | 'plus';
   size?: 'sm' | 'md';
   onClick?: () => void;
 };

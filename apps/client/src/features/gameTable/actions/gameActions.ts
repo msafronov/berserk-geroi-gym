@@ -164,5 +164,6 @@ export const startGame = () => {
 export const endGame = () => {
   $gameTableStore.set({
     ...initialState,
+    gameZoneRef: $gameTableStore.get().gameZoneRef,
   });
 };

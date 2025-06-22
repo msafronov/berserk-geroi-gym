@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import './styles.css';
 
 type Props = {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm2' | 'sm' | 'md' | 'lg';
   children: JSX.Element | JSX.Element[];
 };
 

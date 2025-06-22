@@ -9,6 +9,8 @@ import { DeckEditorModal } from '@/features/deckEditorModal';
 import { CardPickerModal } from '@/features/cardPickerModal';
 import { GameTable } from '@/features/gameTable';
 import { ActiveCardZoom } from '@/features/activeCardZoom';
+import { LeftMenuPanel } from '@/features/leftMenuPanel';
+import { ConfirmationModal } from '@/features/confirmationModal';
 
 export const App = () => {
   useEffect(() => {
@@ -22,8 +24,11 @@ export const App = () => {
       <DecksModal />
       <DeckEditorModal />
       <CardPickerModal />
+      <ConfirmationModal />
 
       <GameTable />
+
+      <LeftMenuPanel />
 
       <ActiveCardZoom />
     </>
