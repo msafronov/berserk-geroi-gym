@@ -2,6 +2,8 @@ import { createDeck, getDeckById, removeDeckById, updateDeck } from "@/features/
 import type { IDatabaseStoreCard } from "@/features/database/store";
 import { $deckEditorModalStore } from "./store";
 import type { IDeckEditorModalSwitchItem } from './store';
+import { openConfirmationModal } from "@/features/confirmationModal/actions";
+import { openDecksModal } from "@/features/decksModal/actions";
 
 export const openDeckEditorModalWithCreation = () => {
   const newDeck = createDeck();
@@ -47,7 +49,16 @@ export const setActiveSwitchItem = (activeSwitchItem: IDeckEditorModalSwitchItem
 };
 
 export const removeDeck = () => {
-  removeDeckById($deckEditorModalStore.get().deck.id);
+  openConfirmationModal({
+    title: `Удаление колоды "${$deckEditorModalStore.get().deck.title}"`,
+    description: 'Колода будет удалена навсегда. Вы уверены?',
+    onSuccess: () => {
+      removeDeckById($deckEditorModalStore.get().deck.id);
+      closeDeckEditorModal();
+      openDecksModal();
+    },
+    onDecline: () => {},
+  });
 };
 
 export const addCardToDeck = (card: IDatabaseStoreCard) => {

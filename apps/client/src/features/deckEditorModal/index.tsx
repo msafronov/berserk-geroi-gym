@@ -37,8 +37,6 @@ export const DeckEditorModal = memo(() => {
 
   const onRemove = useCallback(() => {
     removeDeck();
-    closeDeckEditorModal();
-    openDecksModal();
   }, []);
 
   const onHeroClick = useCallback(() => {
@@ -52,7 +50,7 @@ export const DeckEditorModal = memo(() => {
 
   const onDeckCardsClick = useCallback(() => {
     openCardPickerModal({
-      title: 'Выберите карту (основная колода)',
+      title: 'Выберите карты (основная колода)',
       onSuccess: (setNumber, cardNumber) => {
         addCardToDeck({ setNumber, cardNumber });
       },
@@ -61,7 +59,7 @@ export const DeckEditorModal = memo(() => {
 
   const onSideboardCardsClick = useCallback(() => {
     openCardPickerModal({
-      title: 'Выберите карту (сайдборд)',
+      title: 'Выберите карты (сайдборд)',
       onSuccess: (setNumber, cardNumber) => {
         addCardToSideboard({ setNumber, cardNumber });
       },
