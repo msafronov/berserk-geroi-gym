@@ -22,7 +22,7 @@ export const SetSelect = () => {
   }, []);
 
   const onChange = useCallback((option: ISelectOption) => {
-    changeSelectedSetNumber(Number(option.id));
+    changeSelectedSetNumber(option.id);
   }, []);
 
   return (

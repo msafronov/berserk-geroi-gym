@@ -39,6 +39,27 @@ export const processZoneCardByRules = (card: IGameTableCard, zoneFrom: ZoneType,
     };
   }
 
+  // поменять владельца карты при переходе между зонами
+  if (
+    zoneTo === 'sideboardTop' ||
+    zoneTo === 'questsTop' ||
+    zoneTo === 'graveyardTop' ||
+    zoneTo === 'deckTop' ||
+    zoneTo === 'handTop'
+  ) {
+    cardByRules.owner = 'top'
+  }
+
+  if (
+    zoneTo === 'sideboardBottom' ||
+    zoneTo === 'questsBottom' ||
+    zoneTo === 'graveyardBottom' ||
+    zoneTo === 'deckBottom' ||
+    zoneTo === 'handBottom'
+  ) {
+    cardByRules.owner = 'bottom'
+  }
+
   // при входе в зону колоды из игровой зоны или системной зоны
   // карты переворачиваются по-умолчанию рубашкой вниз
   if (

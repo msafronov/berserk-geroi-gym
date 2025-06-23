@@ -1,7 +1,7 @@
 import { downloadList } from "card-images-downloader";
 
-import { $cardPickerModalStore, initialStore } from "./store";
-import type { CardNumber, OnSuccess, SetNumber } from './store';
+import { $cardPickerModalStore, initialState } from "./store";
+import type { CardPickerCard, OnSuccess, SetNumber } from './store';
 
 export const openCardPickerModal = ({ title, onSuccess }: { title: string, onSuccess: OnSuccess }) => {
   $cardPickerModalStore.set({
@@ -13,28 +13,36 @@ export const openCardPickerModal = ({ title, onSuccess }: { title: string, onSuc
 };
 
 export const closeCardPickerModal = () => {
-  $cardPickerModalStore.set(initialStore);
+  $cardPickerModalStore.set({
+    ...initialState,
+  });
 };
 
 export const init = () => {
-  const sets: Record<SetNumber, CardNumber[]> = {};
+  const cards: Record<string, CardPickerCard[]> = {};
 
   for (let downloadListItem of downloadList) {
-    sets[downloadListItem.setNumber] = [];
+    const currentSetNumber = downloadListItem.setNumber.toString();
+
+    cards[currentSetNumber] = [];
 
     for (let currentCardNumber = downloadListItem.minCardNumber; currentCardNumber <= downloadListItem.maxCardNumber; currentCardNumber++) {
       if (downloadListItem.notExistCardNumbers.includes(currentCardNumber)) {
         continue;
       }
 
-      sets[downloadListItem.setNumber].push(currentCardNumber);
+      cards[currentSetNumber].push({
+        setNumber: currentSetNumber,
+        cardNumber: currentCardNumber.toString(),
+        isSelected: false,
+      });
     }
   }
 
   $cardPickerModalStore.set({
     ...$cardPickerModalStore.get(),
-    selectedSetNumber: downloadList[0].setNumber,
-    sets,
+    selectedSetNumber: downloadList[0].setNumber.toString(),
+    cards,
   });
 
   loadInit();
@@ -50,10 +58,11 @@ export const changeSelectedSetNumber = (selectedSetNumber: SetNumber) => {
 };
 
 export const loadCards = (offset: number) => {
-  const { sets, selectedSetNumber, pagination: { limit } } = $cardPickerModalStore.get();
-  const selectedSetCards = sets[selectedSetNumber];
+  const { cards, selectedSetNumber, pagination: { limit } } = $cardPickerModalStore.get();
 
-  if (!selectedSetCards) {
+  const setCards = cards[selectedSetNumber];
+
+  if (!setCards) {
     // TODO: системная ошибка
     return;
   }
@@ -61,8 +70,8 @@ export const loadCards = (offset: number) => {
   $cardPickerModalStore.set({
     ...$cardPickerModalStore.get(),
     isLoadPreviousEnabled: (offset - limit) >= 0,
-    isLoadNextEnabled: (offset + limit) < selectedSetCards.length,
-    paginatedCardNumbers: sets[selectedSetNumber].slice(offset, offset + limit),
+    isLoadNextEnabled: (offset + limit) < setCards.length,
+    paginatedCards: setCards.slice(offset, offset + limit),
     pagination: {
       offset,
       limit,
@@ -72,6 +81,12 @@ export const loadCards = (offset: number) => {
 
 export const loadInit = () => {
   loadCards(0);
+};
+
+export const loadCurrent = () => {
+  const { pagination: { offset } } = $cardPickerModalStore.get();
+
+  loadCards(offset);
 };
 
 export const loadPrevious = () => {
@@ -86,8 +101,45 @@ export const loadNext = () => {
   loadCards(offset + limit);
 };
 
-export const selectCard = (cardNumber: CardNumber) => {
-  const { selectedSetNumber, onSuccess } = $cardPickerModalStore.get();
+export const selectCardMultiSelect = (cardPickerCard: CardPickerCard) => {
+  const { cards } = $cardPickerModalStore.get();
 
-  onSuccess(selectedSetNumber, cardNumber);
+  if (!cards[cardPickerCard.setNumber]) {
+    // TODO: системная ошибка
+    return;
+  }
+
+  const cardIndex = Number(cardPickerCard.cardNumber) - 1;
+
+  const newIsSelected = !cards[cardPickerCard.setNumber][cardIndex].isSelected;
+
+  cards[cardPickerCard.setNumber][cardIndex].isSelected = newIsSelected;
+
+  $cardPickerModalStore.set({
+    ...$cardPickerModalStore.get(),
+    selectedCardsCount: newIsSelected
+      ? $cardPickerModalStore.get().selectedCardsCount + 1
+      : $cardPickerModalStore.get().selectedCardsCount - 1,
+    cards,
+  });
+
+  loadCurrent();
+};
+
+export const onConfirm = () => {
+  const { cards, onSuccess } = $cardPickerModalStore.get();
+
+  const selectedCards: CardPickerCard[] = [];
+
+  Object.keys(cards).filter((setNumber) => {
+    cards[setNumber].forEach((card) => {
+      if (!card.isSelected) {
+        return;
+      }
+
+      selectedCards.push(card);
+    });
+  });
+
+  onSuccess(selectedCards);
 };

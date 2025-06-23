@@ -61,13 +61,13 @@ export const removeDeck = () => {
   });
 };
 
-export const addCardToDeck = (card: IDatabaseStoreCard) => {
+export const addCardsToDeck = (cards: IDatabaseStoreCard[]) => {
   const deck = $deckEditorModalStore.get().deck;
   const newDeck = {
     ...deck,
     deck: [
       ...deck.deck,
-      card,
+      ...cards,
     ],
   };
 
@@ -79,13 +79,13 @@ export const addCardToDeck = (card: IDatabaseStoreCard) => {
   updateDeck(newDeck);
 };
 
-export const addCardToSideboard = (card: IDatabaseStoreCard) => {
+export const addCardsToSideboard = (cards: IDatabaseStoreCard[]) => {
   const deck = $deckEditorModalStore.get().deck;
   const newDeck = {
     ...deck,
     sideboard: [
       ...deck.sideboard,
-      card,
+      ...cards,
     ],
   };
 

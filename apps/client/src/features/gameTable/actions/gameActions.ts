@@ -15,7 +15,7 @@ import { getGameZoneCoordinates } from "./geometryActions";
 import { defaultCardState } from "./const";
 import { CARD_WIDTH, CARD_HEIGHT } from "../const";
 
-const databaseStoreToGameTableCardsMapper = (databaseStoreCards: Partial<IDatabaseStoreCard>[], zone: ZoneType, owner: OwnerType): IGameTableCard[] => {
+export const databaseStoreToGameTableCardsMapper = (databaseStoreCards: Partial<IDatabaseStoreCard>[], zone: ZoneType, owner: OwnerType): IGameTableCard[] => {
   return databaseStoreCards.map((databaseStoreCard) => {
     return {
       ...defaultCardState,

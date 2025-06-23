@@ -4,29 +4,30 @@ import { useCallback } from 'preact/hooks';
 import { Card } from '@/ui/Card/Card';
 
 import { $cardPickerModalStore } from '../../store';
-import { closeCardPickerModal, selectCard } from '../../actions';
+import type { CardPickerCard } from '../../store';
+import { selectCardMultiSelect } from '../../actions';
 import { CardWrapper } from './components/CardWrapper/CardWrapper';
 
 import './styles.css';
 
 export const CardList = () => {
-  const { selectedSetNumber, paginatedCardNumbers } = useStore($cardPickerModalStore);
+  const { paginatedCards } = useStore($cardPickerModalStore);
 
-  const onClick = useCallback((cardNumber: number) => {
-    selectCard(cardNumber);
-    closeCardPickerModal();
+  const onClick = useCallback((card: CardPickerCard) => {
+    selectCardMultiSelect(card);
   }, []);
 
   return (
     <div className="card-picker-card-list">
-      {paginatedCardNumbers.map((cardNumber) => {
+      {paginatedCards.map((paginatedCard) => {
         return (
           <CardWrapper
-            onClick={() => onClick(cardNumber)}
+            isActive={paginatedCard.isSelected}
+            onClick={() => onClick(paginatedCard)}
           >
             <Card
-              setNumber={selectedSetNumber}
-              cardNumber={cardNumber}
+              setNumber={Number(paginatedCard.setNumber)}
+              cardNumber={Number(paginatedCard.cardNumber)}
             />
           </CardWrapper>
         );

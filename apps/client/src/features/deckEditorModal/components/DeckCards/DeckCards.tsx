@@ -15,7 +15,7 @@ import './styles.css';
 type Props = {
   cards: IDatabaseStoreCard[];
   onDeckCardsClick: () => void;
-  onAddCard: (card: IDatabaseStoreCard) => void;
+  onAddCard: (card: IDatabaseStoreCard[]) => void;
   onRemoveCard: (card: IDatabaseStoreCard) => void;
 };
 
@@ -57,7 +57,7 @@ export const DeckCards = ({ cards, onDeckCardsClick, onAddCard, onRemoveCard }: 
 
   const onIncreaseClick = useCallback((event: MouseEvent, card: IDatabaseStoreCardWithCount) => {
     event.stopPropagation();
-    onAddCard({ setNumber: card.setNumber, cardNumber: card.cardNumber });
+    onAddCard([{ setNumber: card.setNumber, cardNumber: card.cardNumber }]);
   }, []);
 
   const onDecreaseClick = useCallback((event: MouseEvent, card: IDatabaseStoreCardWithCount) => {

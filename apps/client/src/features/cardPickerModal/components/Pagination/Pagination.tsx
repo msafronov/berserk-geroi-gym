@@ -1,5 +1,4 @@
 import { useStore } from '@nanostores/preact';
-import { useMemo } from 'preact/hooks';
 
 import { Button } from '@/ui/Button/Button';
 import { Text } from '@/ui/Text/Text';
@@ -13,18 +12,14 @@ const noop = () => {};
 
 export const Pagination = () => {
   const {
+    cards,
     selectedSetNumber,
-    sets,
     pagination: {
       offset,
     },
     isLoadPreviousEnabled,
     isLoadNextEnabled,
   } = useStore($cardPickerModalStore);
-
-  const cardsLength = useMemo(() => {
-    return sets[selectedSetNumber]?.length || 0;
-  }, [selectedSetNumber]);
 
   return (
     <div className="card-picker-pagination">
@@ -42,7 +37,7 @@ export const Pagination = () => {
       >
         <Text size="lg">{offset}</Text>
         <Text size="lg">/</Text>
-        <Text size="lg">{cardsLength}</Text>
+        <Text size="lg">{cards[selectedSetNumber]?.length || 0}</Text>
       </Button>
 
       <Button

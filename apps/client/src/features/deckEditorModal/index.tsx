@@ -12,8 +12,8 @@ import { $deckEditorModalStore } from './store';
 import {
   closeDeckEditorModal,
   removeDeck,
-  addCardToDeck,
-  addCardToSideboard,
+  addCardsToDeck,
+  addCardsToSideboard,
   removeCardFromDeck,
   removeCardFromSideboard,
   changeHero,
@@ -42,8 +42,10 @@ export const DeckEditorModal = memo(() => {
   const onHeroClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите героя',
-      onSuccess: (setNumber, cardNumber) => {
-        changeHero({ setNumber, cardNumber });
+      onSuccess: (cards) => {
+        const heroCard = cards[cards.length - 1];
+
+        changeHero({ setNumber: Number(heroCard.setNumber), cardNumber: Number(heroCard.cardNumber) });
       },
     });
   }, []);
@@ -51,8 +53,15 @@ export const DeckEditorModal = memo(() => {
   const onDeckCardsClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите карты (основная колода)',
-      onSuccess: (setNumber, cardNumber) => {
-        addCardToDeck({ setNumber, cardNumber });
+      onSuccess: (cards) => {
+        addCardsToDeck(
+          cards.map((card) => {
+            return {
+              setNumber: Number(card.setNumber),
+              cardNumber: Number(card.cardNumber),
+            };
+          }),
+        );
       },
     });
   }, []);
@@ -60,8 +69,15 @@ export const DeckEditorModal = memo(() => {
   const onSideboardCardsClick = useCallback(() => {
     openCardPickerModal({
       title: 'Выберите карты (сайдборд)',
-      onSuccess: (setNumber, cardNumber) => {
-        addCardToSideboard({ setNumber, cardNumber });
+      onSuccess: (cards) => {
+        addCardsToSideboard(
+          cards.map((card) => {
+            return {
+              setNumber: Number(card.setNumber),
+              cardNumber: Number(card.cardNumber),
+            };
+          }),
+        );
       },
     });
   }, []);
@@ -97,7 +113,7 @@ export const DeckEditorModal = memo(() => {
           <DeckCards
             cards={deck.deck}
             onDeckCardsClick={onDeckCardsClick}
-            onAddCard={addCardToDeck}
+            onAddCard={addCardsToDeck}
             onRemoveCard={removeCardFromDeck}
           />
         )}
@@ -106,7 +122,7 @@ export const DeckEditorModal = memo(() => {
           <DeckCards
             cards={deck.sideboard}
             onDeckCardsClick={onSideboardCardsClick}
-            onAddCard={addCardToSideboard}
+            onAddCard={addCardsToSideboard}
             onRemoveCard={removeCardFromSideboard}
           />
         )}
