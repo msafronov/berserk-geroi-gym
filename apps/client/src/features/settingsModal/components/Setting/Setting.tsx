@@ -6,10 +6,10 @@ type Props = {
   children: JSX.Element[];
 };
 
-export const DeckListWrapper = ({ children }: Props) => {
+export const Setting = ({ children }: Props) => {
   return (
-    <div className="decks-decklist-wrapper">
+    <div className="settings-modal-setting">
       {children}
     </div>
-  )
+  );
 };

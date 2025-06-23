@@ -74,3 +74,11 @@
 .icon--image--cogs {
   background-image: url("/img/icons/icon-cogs.svg");
 }
+
+.icon--image--import {
+  background-image: url("/img/icons/icon-import.svg");
+}
+
+.icon--image--export {
+  background-image: url("/img/icons/icon-export.svg");
+}

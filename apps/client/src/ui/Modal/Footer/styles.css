@@ -3,3 +3,7 @@
   justify-content: space-between;
   margin-top: var(--margin-lg);
 }
+
+.modal-footer--justifyContent--center {
+  justify-content: center;
+}

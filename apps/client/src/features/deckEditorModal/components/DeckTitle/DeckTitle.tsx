@@ -1,4 +1,3 @@
-import type { TargetedEvent } from 'preact/compat';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 
@@ -19,29 +18,22 @@ export const DeckTitle = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const validate = useCallback(() => {
-    const errors = validateDeckTitle(value);
-    const isValid = !errors.length;
+    const error = validateDeckTitle(value);
+    const errorMessage = error?.message || null;
 
-    if (errors.includes('DECK_TITLE_IS_EMPTY_ERROR')) {
-      setErrorMessage('Название колоды не может быть пустым');
-    } else if (errors.includes('DECK_TITLE_IS_INVALID_ERROR')) {
-      setErrorMessage(`Название колоды не может превышать ${DECK_TITLE_LENGTH_MAX} символов`);
-    } else {
-      setErrorMessage(null);
-    }
+    setErrorMessage(errorMessage);
 
-    return isValid;
+    return !!errorMessage;
   }, [value]);
 
-  const onChange = useCallback((event: TargetedEvent<HTMLInputElement, Event>) => {
-    // @ts-ignore
-    setValue(event.target.value);
+  const onChange = useCallback((value: string | number) => {
+    setValue(value.toString());
   }, []);
 
   const onFocusOut = useCallback(() => {
-    const isValid = validate();
+    const hasError = validate();
 
-    if (isValid) {
+    if (!hasError) {
       setTitle(value);
     }
   }, [value]);

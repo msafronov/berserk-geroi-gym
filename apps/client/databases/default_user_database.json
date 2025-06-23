@@ -1,5 +1,5 @@
 {
-  "name": "<DEFAULT_USER>",
+  "name": "DEFAULT_USER",
   "settings": {
     "lastSelectedDeckIdTop": "ZksARwBNDijoeSOI5qEAp",
     "lastSelectedDeckIdBottom": "VkuhryV1JsFJmiNkRU_cX",
@@ -10,7 +10,7 @@
     {
       "id": "ZksARwBNDijoeSOI5qEAp",
       "title": "Сайконо 2025",
-      "description": "Original: https://berserkdeck.ru/decks/30625",
+      "description": "Original berserkdeck id 30625",
       "hero": { "setNumber": 15, "cardNumber": 197 },
       "deck": [
         { "setNumber": 17, "cardNumber": 51 },
@@ -70,7 +70,7 @@
     {
       "id": "VkuhryV1JsFJmiNkRU_cX",
       "title": "Сахана 2025",
-      "description": "Original: https://berserkdeck.ru/decks/30479",
+      "description": "Original berserkdeck id 30479",
       "hero": { "setNumber": 14, "cardNumber": 190 },
       "deck": [
         { "setNumber": 16, "cardNumber": 101 },

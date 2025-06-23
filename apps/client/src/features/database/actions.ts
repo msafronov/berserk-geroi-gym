@@ -23,6 +23,19 @@ export const initializeUserDatabase = (): void => {
   }
 };
 
+export const getDatabase = (): IDatabaseStore => {
+  return $databaseStore.get();
+};
+
+export const setDatabase = (database: IDatabaseStore) => {
+  setItem<IDatabaseStore>(LOCAL_STORAGE_KEY_DB, database);
+  initializeUserDatabase();
+};
+
+export const getSettings = (): IDatabaseStoreSettings => {
+  return $databaseStore.get().settings;
+};
+
 export const getLastSelectedDeckTop = (): IDatabaseStoreDeck | null => {
   return getDeckById($databaseStore.get().settings.lastSelectedDeckIdTop);
 };
@@ -41,10 +54,6 @@ export const setLastSelectedDeckTop = (deckId: string) => {
   saveUserDatabaseToLocalStorage();
 };
 
-export const getSettings = (): IDatabaseStoreSettings => {
-  return $databaseStore.get().settings;
-};
-
 export const getLastSelectedDeckBottom = (): IDatabaseStoreDeck | null => {
   return getDeckById($databaseStore.get().settings.lastSelectedDeckIdBottom);
 };
@@ -57,6 +66,43 @@ export const setLastSelectedDeckBottom = (deckId: string) => {
     settings: {
       ...databaseStore.settings,
       lastSelectedDeckIdBottom: deckId,
+    },
+  });
+
+  saveUserDatabaseToLocalStorage();
+};
+
+export const setName = (name: string) => {
+  $databaseStore.set({
+    ...$databaseStore.get(),
+    name,
+  });
+
+  saveUserDatabaseToLocalStorage();
+};
+
+export const setAutoDealCardsCount = (autoDealCardsCount: number) => {
+  const databaseStore = $databaseStore.get();
+
+  $databaseStore.set({
+    ...databaseStore,
+    settings: {
+      ...databaseStore.settings,
+      autoDealCardsCount,
+    },
+  });
+
+  saveUserDatabaseToLocalStorage();
+};
+
+export const setInitialCoinCount = (initialCoinCount: number) => {
+  const databaseStore = $databaseStore.get();
+
+  $databaseStore.set({
+    ...databaseStore,
+    settings: {
+      ...databaseStore.settings,
+      initialCoinCount,
     },
   });
 

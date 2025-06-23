@@ -1,6 +1,9 @@
-.decks-decklist-wrapper {
+.settings-modal-settings-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
   flex-wrap: wrap;
 
   gap: 8px;
@@ -8,7 +11,6 @@
   row-gap: 16px;
   column-gap: 24px;
 
-  /* padding: var(--padding-md); */
   box-sizing: border-box;
 
   border: 1px solid var(--color-gray);

@@ -16,7 +16,9 @@ type Props = {
     | 'start-new-game'
     | 'home'
     | 'plus'
-    | 'cogs';
+    | 'cogs'
+    | 'import'
+    | 'export';
   size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
 };

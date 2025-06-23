@@ -1,4 +1,3 @@
-import type { TargetedEvent } from 'preact/compat';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 
@@ -19,27 +18,22 @@ export const DeckDescription = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
   const validate = useCallback(() => {
-    const errors = validateDeckDescription(value);
-    const isValid = !errors.length;
+    const error = validateDeckDescription(value);
+    const errorMessage = error?.message || null;
 
-    if (errors.includes('DECK_DESCRIPTION_IS_INVALID_ERROR')) {
-      setErrorMessage(`Описание колоды не может превышать ${DECK_DESCRIPTION_LENGTH_MAX} символов`);
-    } else {
-      setErrorMessage(null);
-    }
+    setErrorMessage(errorMessage);
 
-    return isValid;
+    return !!errorMessage;
   }, [value]);
 
-  const onChange = useCallback((event: TargetedEvent<HTMLInputElement, Event>) => {
-    // @ts-ignore
-    setValue(event.target.value);
+  const onChange = useCallback((value: string | number) => {
+    setValue(value.toString());
   }, []);
 
   const onFocusOut = useCallback(() => {
-    const isValid = validate();
+    const hasError = validate();
 
-    if (isValid) {
+    if (!hasError) {
       setDescription(value);
     }
   }, [value]);

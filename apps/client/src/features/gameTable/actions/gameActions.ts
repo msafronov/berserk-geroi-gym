@@ -32,7 +32,7 @@ const createHandTop = (deckCards: IDatabaseStoreCard[], settings: IDatabaseStore
 
   const deckCardsDealed = settings.autoDealCardsCount > 0
     ? deckCardsMapped.slice(0, settings.autoDealCardsCount)
-    : deckCardsMapped;
+    : [];
 
   addCardsToZone(deckCardsDealed, '_system', 'handTop');
 };
@@ -42,7 +42,7 @@ const createHandBottom = (deckCards: IDatabaseStoreCard[], settings: IDatabaseSt
 
   const deckCardsDealed = settings.autoDealCardsCount > 0
     ? deckCardsMapped.slice(0, settings.autoDealCardsCount)
-    : deckCardsMapped;
+    : [];
 
   addCardsToZone(deckCardsDealed, '_system', 'handBottom');
 };
