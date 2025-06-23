@@ -17,8 +17,12 @@
   pointer-events: none;
 }
 
-.button--size--md {
+.button--size--sm {
   width: 30%;
+}
+
+.button--size--md {
+  width: 60%;
 }
 
 .button--size--lg {

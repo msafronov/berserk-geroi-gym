@@ -18,12 +18,21 @@
   height: 32px;
 }
 
+.icon--size--lg {
+  width: 64px;
+  height: 64px;
+}
+
 .icon--image--telegram {
   background-image: url("/img/icons/icon-telegram.svg");
 }
 
 .icon--image--github {
   background-image: url("/img/icons/icon-github.svg");
+}
+
+.icon--image--berserkdeck {
+  background-image: url("/img/icons/icon-berserkdeck.png");
 }
 
 .icon--image--close-card {
@@ -60,4 +69,8 @@
 
 .icon--image--plus {
   background-image: url("/img/icons/icon-plus.svg");
+}
+
+.icon--image--cogs {
+  background-image: url("/img/icons/icon-cogs.svg");
 }

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import './styles.css';
 
 type Props = {
-  size?: 'md' | 'lg' | 'lg2';
+  size?: 'sm' | 'md' | 'lg' | 'lg2';
   color?: 'white' | 'violett' | 'red' | 'blue';
   disabled?: boolean;
   marginTop?: 'lg';

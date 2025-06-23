@@ -8,6 +8,7 @@ import { $startScreenModalStore } from './store';
 import { Wrapper } from './components/Wrapper/Wrapper';
 import { WrapperPanel } from './components/WrapperPanel/WrapperPanel';
 import { Description } from './components/Description/Description';
+import { MainMenu } from './components/MainMenu/MainMenu';
 import { SocialMedia } from './components/SocialMedia/SocialMedia';
 import { Decks } from './components/Decks/Decks';
 import { Title } from './components/Title/Title';
@@ -33,6 +34,7 @@ export const StartScreenModal = memo(() => {
 
           <WrapperPanel borderLeft>
             <Description />
+            <MainMenu />
             <SocialMedia />
           </WrapperPanel>
         </Wrapper>

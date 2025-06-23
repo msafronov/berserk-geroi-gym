@@ -1,0 +1,12 @@
+.start-screen-modal-main-menu {}
+
+.start-screen-modal-main-menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.start-screen-modal-main-menu-item:hover {
+  opacity: 0.6;
+}

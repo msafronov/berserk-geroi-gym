@@ -86,7 +86,7 @@ export const Decks = () => {
           color="white"
           weight="bold"
         >
-          Начать!
+          Начать тренировку!
         </Text>
       </Button>
     </>

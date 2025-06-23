@@ -1,1 +1,6 @@
-.start-screen-modal-title {}
+.start-screen-modal-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

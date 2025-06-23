@@ -6,7 +6,14 @@ import './styles.css';
 export const SocialMedia = () => {
   return (
     <div className="start-screen-modal-social-media">
-      <a href="tg://user?name=@mfsafronov" target="_blank">
+      <a href="https://berserkdeck.ru/" target="_blank">
+        <div className="start-screen-modal-social-media-item">
+          <Icon image="berserkdeck" />
+          <Text size="sm">berserkdeck</Text>
+        </div>
+      </a>
+
+      <a href="https://t.me/mfsafronov" target="_blank">
         <div className="start-screen-modal-social-media-item">
           <Icon image="telegram" />
           <Text size="sm">telegram</Text>

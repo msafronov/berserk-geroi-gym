@@ -6,6 +6,7 @@ type Props = {
   image:
     | 'telegram'
     | 'github'
+    | 'berserkdeck'
     | 'close-card'
     | 'open-card'
     | 'dots-vertical'
@@ -14,8 +15,9 @@ type Props = {
     | 'arrow-right'
     | 'start-new-game'
     | 'home'
-    | 'plus';
-  size?: 'sm' | 'md';
+    | 'plus'
+    | 'cogs';
+  size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
 };
 
