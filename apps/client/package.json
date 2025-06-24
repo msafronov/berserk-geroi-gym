@@ -10,8 +10,8 @@
     "lint": "echo \"Error: no lint specified\""
   },
   "dependencies": {
-    "card-images-downloader": "file:../card-images-downloader",
     "@nanostores/preact": "^1.0.0",
+    "card-images-downloader": "file:../card-images-downloader",
     "clsx": "^2.1.1",
     "nanoid": "^5.1.5",
     "nanostores": "^1.0.1",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
+    "@rollup/rollup-darwin-x64": "^4.44.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }
