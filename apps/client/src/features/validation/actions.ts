@@ -1,4 +1,4 @@
-import type { IDatabaseStore } from "@/features/database/store";
+import type { IDatabaseStore, IDatabaseStoreDeck } from "@/features/database/store";
 import type { ValidationError, ValidationErrorCode } from "./store";
 
 import {
@@ -52,22 +52,40 @@ export const validateDatabase = (database: IDatabaseStore): ValidationError[] =>
     errors.push(validateInitialCoinCountSetting(database.settings.initialCoinCount));
 
     database.decks.forEach((deck) => {
-      errors.push(validateDeckId(deck.id));
-      errors.push(validateDeckTitle(deck.title));
-      errors.push(validateDeckDescription(deck.description));
+      errors.push(...validateDeck(deck));
+    });
+  } catch (error) {
+    return [
+      createValidationError('DATABASE_STRUCTURE_INVALID'),
+    ];
+  }
 
-      errors.push(validateDeckHeroSetNumber(deck.hero.setNumber));
-      errors.push(validateDeckHeroCardNumber(deck.hero.cardNumber));
+  const result = errors.filter((error) => {
+    return error !== null;
+  });
 
-      deck.deck.forEach((card) => {
-        errors.push(validateDeckDeckSetNumber(card.setNumber));
-        errors.push(validateDeckDeckCardNumber(card.cardNumber));
-      });
+  return result;
+};
 
-      deck.sideboard.forEach((card) => {
-        errors.push(validateDeckSideboardSetNumber(card.setNumber));
-        errors.push(validateDeckkSideboardCardNumber(card.cardNumber));
-      });
+export const validateDeck = (deck: IDatabaseStoreDeck) => {
+  const errors: (ValidationError | null)[] = [];
+
+  try {
+    errors.push(validateDeckId(deck.id));
+    // errors.push(validateDeckTitle(deck.title));
+    // errors.push(validateDeckDescription(deck.description));
+
+    errors.push(validateDeckHeroSetNumber(deck.hero.setNumber));
+    errors.push(validateDeckHeroCardNumber(deck.hero.cardNumber));
+
+    deck.deck.forEach((card) => {
+      errors.push(validateDeckDeckSetNumber(card.setNumber));
+      errors.push(validateDeckDeckCardNumber(card.cardNumber));
+    });
+
+    deck.sideboard.forEach((card) => {
+      errors.push(validateDeckSideboardSetNumber(card.setNumber));
+      errors.push(validateDeckkSideboardCardNumber(card.cardNumber));
     });
   } catch (error) {
     return [

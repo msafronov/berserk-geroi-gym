@@ -4,9 +4,9 @@ import { Button } from '@/ui/Button/Button';
 import { Text } from '@/ui/Text/Text';
 
 import { loadNext, loadPrevious } from '../../actions';
+import { $cardPickerModalStore } from '../../store';
 
 import './styles.css';
-import { $cardPickerModalStore } from '../../store';
 
 const noop = () => {};
 

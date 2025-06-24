@@ -109,7 +109,7 @@ export const setInitialCoinCount = (initialCoinCount: number) => {
   saveUserDatabaseToLocalStorage();
 };
 
-export const createDeck = (): IDatabaseStoreDeck => {
+export const createDeck = (deckData?: IDatabaseStoreDeck): IDatabaseStoreDeck => {
   const databaseStore = $databaseStore.get();
 
   const newDeck = {
@@ -119,6 +119,7 @@ export const createDeck = (): IDatabaseStoreDeck => {
     hero: { setNumber: CARD_EMPTY_SET_NUMBER, cardNumber: CARD_EMPTY_CARD_NUMBER },
     deck: [],
     sideboard: [],
+    ...deckData,
   };
 
   $databaseStore.set({

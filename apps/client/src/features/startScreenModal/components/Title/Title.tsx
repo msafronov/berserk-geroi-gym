@@ -4,7 +4,7 @@ import './styles.css';
 
 export const Title = () => {
   // @ts-ignore
-  const version = _BUILD_INFO_.version;
+  const version = _CONFIG_.version;
 
   return (
     <div className="start-screen-modal-title">

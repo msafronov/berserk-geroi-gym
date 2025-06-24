@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
-    "@rollup/rollup-darwin-x64": "^4.44.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }

@@ -6,8 +6,16 @@
   color: var(--color-black);
 }
 
+.input::placeholder {
+  color: var(--color-gray);
+}
+
 .input--state--error {
   border: 1px solid var(--color-red);
   color: var(--color-red);
   outline: 1px solid var(--color-red);;
+}
+
+.input--size--sm {
+  width: 40%;
 }

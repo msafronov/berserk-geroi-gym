@@ -5,8 +5,8 @@
   "author": "Matvey Safronov",
   "license": "",
   "workspaces": [
-    "apps/card-images-downloader",
-    "apps/client"
+    "apps/client",
+    "apps/server"
   ],
   "scripts": {
     "dev": "npm run dev --workspaces --if-present",

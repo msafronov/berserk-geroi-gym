@@ -5,9 +5,16 @@ import preact from "@preact/preset-vite";
 const packageJSON = require('./package.json');
 const defaultUserDatabaseJSON = require('./databases/default_user_database.json');
 
+const configJSON = process.env.NODE_ENV === 'development'
+  ? require('./config/development.json')
+  : require('./config/production.json');
+
 export default defineConfig({
   define: {
-    _BUILD_INFO_: JSON.stringify({ version: packageJSON.version }),
+    _CONFIG_: JSON.stringify({
+      ...configJSON,
+      version: packageJSON.version,
+    }),
     _DEFAULT_USER_DATABASE_: JSON.stringify(defaultUserDatabaseJSON),
   },
   resolve: {

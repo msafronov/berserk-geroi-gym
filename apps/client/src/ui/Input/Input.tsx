@@ -13,6 +13,7 @@ type Props = {
   min?: number;
   max?: number;
   hasError?: boolean;
+  size?: 'sm';
   onChange: (value: string | number) => void;
   onFocusOut?: () => void;
 };
@@ -26,6 +27,7 @@ export const Input = ({
   min,
   max,
   hasError = false,
+  size,
   onChange,
   onFocusOut,
 }: Props) => {
@@ -39,6 +41,7 @@ export const Input = ({
       type={type}
       className={clsx('input', {
         'input--state--error': hasError,
+        [`input--size--${size}`]: size,
       })}
       value={value}
       placeholder={placeholder}

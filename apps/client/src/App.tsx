@@ -13,6 +13,7 @@ import { LeftMenuPanel } from '@/features/leftMenuPanel';
 import { MessageModal } from '@/features/messageModal';
 import { ConfirmationModal } from '@/features/confirmationModal';
 import { SettingsModal } from '@/features/settingsModal';
+import { BerserkdeckimportModal } from '@/features/berserkdeckImportModal';
 
 export const App = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ export const App = () => {
       <DeckEditorModal />
       <CardPickerModal />
       <SettingsModal />
+      <BerserkdeckimportModal />
       <ConfirmationModal />
       <MessageModal />
 
