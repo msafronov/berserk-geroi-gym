@@ -72,8 +72,8 @@ export const validateDeck = (deck: IDatabaseStoreDeck) => {
 
   try {
     errors.push(validateDeckId(deck.id));
-    // errors.push(validateDeckTitle(deck.title));
-    // errors.push(validateDeckDescription(deck.description));
+    errors.push(validateDeckTitle(deck.title));
+    errors.push(validateDeckDescription(deck.description));
 
     errors.push(validateDeckHeroSetNumber(deck.hero.setNumber));
     errors.push(validateDeckHeroCardNumber(deck.hero.cardNumber));

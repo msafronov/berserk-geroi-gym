@@ -72,9 +72,14 @@ export const importDeck = () => {
         return;
       }
 
-      // TODO: импорт колоды
       const importedDeck = (await response.json()) as IDatabaseStoreDeck;
-      const errors = validateDeck(importedDeck);
+      const importedDeckFormatted = {
+        ...importedDeck,
+        title: deckId,
+        description: '',
+      };
+
+      const errors = validateDeck(importedDeckFormatted);
 
       if (errors.length) {
         const errorMessages = errors
@@ -87,7 +92,7 @@ export const importDeck = () => {
         return;
       }
 
-      createDeck(importedDeck);
+      createDeck(importedDeckFormatted);
       closeBerserkdeckImportModal();
     })
     .catch((error) => {
