@@ -27,30 +27,29 @@ export const DeckCards = ({ cards, onDeckCardsClick, onAddCard, onRemoveCard }: 
   const [cardsWithCount, setCardsWithCount] = useState<IDatabaseStoreCardWithCount[]>([]);
 
   useLayoutEffect(() => {
-    // группировка карт по "setNumber_cardNumber" -> count
-
     const dictionary: Record<string, number> = {};
+    const order: string[] = [];
 
     cards.forEach((card) => {
       const index = `${card.setNumber}_${card.cardNumber}`;
 
       if (dictionary[index]) {
-        // @ts-ignore
         dictionary[index]++;
       } else {
         dictionary[index] = 1;
+        order.push(index);
       }
     });
 
-    // добавление сгруппированных карт в локальный state для последующего рендера
+    order.sort();
 
     const groupedCards: IDatabaseStoreCardWithCount[] = [];
 
-    Object.keys(dictionary).sort().forEach((index) => {
+    for (let index of order) {
       const [setNumber, cardNumber] = index.split('_').map(token => Number(token));
 
       groupedCards.push({ setNumber, cardNumber, count: dictionary[index] });
-    });
+    }
 
     setCardsWithCount(groupedCards);
   }, [cards]);
