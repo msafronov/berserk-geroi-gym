@@ -9,7 +9,7 @@ const cardNumberRangeInclusive = (from: number, to: number) => {
 };
 
 export const downloadList = [
-  // { title: 'Раммарат, setNumber: 23, minCardNumber: 1, maxCardNumber: 207, notExistCardNumbers: [], pfCardNumbers: [] },
+  { title: 'Раммарат', setNumber: 23, minCardNumber: 1, maxCardNumber: 207, notExistCardNumbers: [], pfCardNumbers: [...cardNumberRangeInclusive(193, 207)] },
 
   { title: 'Обучающий Набор 2025', setNumber: 22, minCardNumber: 1, maxCardNumber: 74, notExistCardNumbers: [...cardNumberRangeInclusive(45, 67), 69], pfCardNumbers: [68, 70] },
 
