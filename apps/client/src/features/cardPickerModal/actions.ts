@@ -109,11 +109,23 @@ export const selectCardMultiSelect = (cardPickerCard: CardPickerCard) => {
     return;
   }
 
-  const cardIndex = Number(cardPickerCard.cardNumber) - 1;
+  let newIsSelected = false;
 
-  const newIsSelected = !cards[cardPickerCard.setNumber][cardIndex].isSelected;
+  cards[cardPickerCard.setNumber] = cards[cardPickerCard.setNumber].map((card) => {
+    if (
+      card.cardNumber === cardPickerCard.cardNumber &&
+      card.setNumber === cardPickerCard.setNumber
+    ) {
+      newIsSelected = !card.isSelected;
 
-  cards[cardPickerCard.setNumber][cardIndex].isSelected = newIsSelected;
+      return {
+        ...card,
+        isSelected: newIsSelected,
+      };
+    }
+
+    return card;
+  });
 
   $cardPickerModalStore.set({
     ...$cardPickerModalStore.get(),
