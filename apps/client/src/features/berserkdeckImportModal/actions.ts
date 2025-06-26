@@ -1,8 +1,8 @@
 import { createDeck } from "@/features/database/actions";
-import type { IDatabaseStoreDeck } from "@/features/database/store";
 import { validateDeck } from "@/features/validation/actions";
 
 import { $berserkdeckImportModalStore, initialState } from "./store";
+import { mapBerserkdeckDeckToDatabaseStoreDeck } from './utils/mapBerserkdeckDeckToDatabaseStoreDeck';
 
 export const openBerserkdeckImportModal = () => {
   $berserkdeckImportModalStore.set({
@@ -57,13 +57,7 @@ export const importDeck = () => {
   const { deckId } = $berserkdeckImportModalStore.get();
 
   // @ts-ignore
-  fetch(_CONFIG_.deckImportURL, {
-    method: "POST",
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ id: deckId }),
-  })
+  fetch(`${_CONFIG_.deckImportURL}/${deckId}`)
     .then(async (response) => {
       setIsLoading(false);
 
@@ -72,14 +66,17 @@ export const importDeck = () => {
         return;
       }
 
-      const importedDeck = (await response.json()) as IDatabaseStoreDeck;
-      const importedDeckFormatted = {
-        ...importedDeck,
-        title: deckId,
-        description: '',
-      };
+      let databaseStoreDeck;
 
-      const errors = validateDeck(importedDeckFormatted);
+      try {
+        const berserkdeckDeck = await response.json();
+        databaseStoreDeck = await mapBerserkdeckDeckToDatabaseStoreDeck(berserkdeckDeck);
+      } catch (error) {
+        setError(`Ошибка обработки результата запроса: ${error}`);
+        return;
+      }
+
+      const errors = validateDeck(databaseStoreDeck);
 
       if (errors.length) {
         const errorMessages = errors
@@ -92,7 +89,7 @@ export const importDeck = () => {
         return;
       }
 
-      createDeck(importedDeckFormatted);
+      createDeck(databaseStoreDeck);
       closeBerserkdeckImportModal();
     })
     .catch((error) => {

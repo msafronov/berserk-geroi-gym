@@ -24,4 +24,15 @@ export default defineConfig({
     },
   },
   plugins: [preact()],
+  build: {
+  rollupOptions: {
+    output: {
+      assetFileNames: () => {
+        return `assets/${packageJSON.version}[extname]`;
+      },
+      chunkFileNames: `assets/${packageJSON.version}.js`,
+      entryFileNames: `assets/${packageJSON.version}.js`,
+    },
+  },
+},
 })
