@@ -13,7 +13,7 @@ export const downloadList = [
 
   { title: 'Обучающий Набор 2025', setNumber: 22, minCardNumber: 1, maxCardNumber: 74, notExistCardNumbers: [...cardNumberRangeInclusive(45, 67), 69], pfCardNumbers: [68, 70] },
 
-  { title: 'Золотой Век', setNumber: 21, minCardNumber: 1, maxCardNumber: 234, notExistCardNumbers: [205, 206, 207, 208, 211, 213, 214, 215, 216, 221, 225, 226], pfCardNumbers: [190, ...cardNumberRangeInclusive(196, 200), ...cardNumberRangeInclusive(203, 234)] },
+  { title: 'Золотой Век', setNumber: 21, minCardNumber: 1, maxCardNumber: 234, notExistCardNumbers: [], pfCardNumbers: [190, ...cardNumberRangeInclusive(196, 200), ...cardNumberRangeInclusive(203, 234)] },
 
   { title: 'Большая Игра', setNumber: 19, minCardNumber: 1, maxCardNumber: 38, notExistCardNumbers: [], pfCardNumbers: [4, 14, 32, 37, 38] },
 
